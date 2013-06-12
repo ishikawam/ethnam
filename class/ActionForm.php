@@ -9,16 +9,16 @@
  *  @version    $Id$
  */
 
-/** Äê·¿¥Õ¥£¥ë¥¿: È¾³ÑÆşÎÏ */
+/** å®šå‹ãƒ•ã‚£ãƒ«ã‚¿: åŠè§’å…¥åŠ› */
 define('FILTER_HW', 'numeric_zentohan,alphabet_zentohan,ltrim,rtrim,ntrim');
 
-/** Äê·¿¥Õ¥£¥ë¥¿: Á´³ÑÆşÎÏ */
+/** å®šå‹ãƒ•ã‚£ãƒ«ã‚¿: å…¨è§’å…¥åŠ› */
 define('FILTER_FW', 'kana_hantozen,ntrim');
 
 
 // {{{ Ethna_ActionForm
 /**
- *  ¥¢¥¯¥·¥ç¥ó¥Õ¥©¡¼¥à¥¯¥é¥¹
+ *  ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚©ãƒ¼ãƒ ã‚¯ãƒ©ã‚¹
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @access     public
@@ -30,66 +30,66 @@ class Ethna_ActionForm
      *  @access private
      */
 
-    /** @var    array   ¥Õ¥©¡¼¥àÃÍÄêµÁ(¥Ç¥Õ¥©¥ë¥È) */
+    /** @var    array   ãƒ•ã‚©ãƒ¼ãƒ å€¤å®šç¾©(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ) */
     public $form_template = array();
 
-    /** @var    array   ¥Õ¥©¡¼¥àÃÍÄêµÁ */
+    /** @var    array   ãƒ•ã‚©ãƒ¼ãƒ å€¤å®šç¾© */
     public $form = array();
 
-    /** @var    array   ¥Õ¥©¡¼¥àÃÍ */
+    /** @var    array   ãƒ•ã‚©ãƒ¼ãƒ å€¤ */
     var $form_vars = array();
 
-    /** @var    array   ¥¢¥×¥ê¥±¡¼¥·¥ç¥óÀßÄêÃÍ */
+    /** @var    array   ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³è¨­å®šå€¤ */
     var $app_vars = array();
 
-    /** @var    array   ¥¢¥×¥ê¥±¡¼¥·¥ç¥óÀßÄêÃÍ(¼«Æ°¥¨¥¹¥±¡¼¥×¤Ê¤·) */
+    /** @var    array   ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³è¨­å®šå€¤(è‡ªå‹•ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ãªã—) */
     var $app_ne_vars = array();
 
-    /** @var    object  Ethna_Backend       ¥Ğ¥Ã¥¯¥¨¥ó¥É¥ª¥Ö¥¸¥§¥¯¥È */
+    /** @var    object  Ethna_Backend       ãƒãƒƒã‚¯ã‚¨ãƒ³ãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ */
     var $backend;
 
-    /** @var    object  Ethna_ActionError   ¥¢¥¯¥·¥ç¥ó¥¨¥é¡¼¥ª¥Ö¥¸¥§¥¯¥È */
+    /** @var    object  Ethna_ActionError   ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚¨ãƒ©ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ */
     var $action_error;
 
-    /** @var    object  Ethna_ActionError   ¥¢¥¯¥·¥ç¥ó¥¨¥é¡¼¥ª¥Ö¥¸¥§¥¯¥È(¾ÊÎ¬·Á) */
+    /** @var    object  Ethna_ActionError   ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚¨ãƒ©ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(çœç•¥å½¢) */
     var $ae;
 
-    /** @var    object  Ethna_I18N  i18n¥ª¥Ö¥¸¥§¥¯¥È */
+    /** @var    object  Ethna_I18N  i18nã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ */
     var $i18n;
 
-    /** @var    object  Ethna_Logger    ¥í¥°¥ª¥Ö¥¸¥§¥¯¥È */
+    /** @var    object  Ethna_Logger    ãƒ­ã‚°ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ */
     var $logger;
 
-    /** @var    object  Ethna_Plugin    ¥×¥é¥°¥¤¥ó¥ª¥Ö¥¸¥§¥¯¥È */
+    /** @var    object  Ethna_Plugin    ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ */
     var $plugin;
 
-    /** @var    array   ¥Õ¥©¡¼¥àÄêµÁÍ×ÁÇ */
+    /** @var    array   ãƒ•ã‚©ãƒ¼ãƒ å®šç¾©è¦ç´  */
     var $def = array('name', 'required', 'max', 'min', 'regexp', 'mbregexp',
                      'custom', 'filter', 'form_type', 'type');
 
-    /** @var    array   ¥Õ¥©¡¼¥àÄêµÁ¤Î¤¦¤ÁÈó¥×¥é¥°¥¤¥óÍ×ÁÇ¤È¤ß¤Ê¤¹prefix */
+    /** @var    array   ãƒ•ã‚©ãƒ¼ãƒ å®šç¾©ã®ã†ã¡éãƒ—ãƒ©ã‚°ã‚¤ãƒ³è¦ç´ ã¨ã¿ãªã™prefix */
     var $def_noplugin = array('type', 'form', 'name', 'plugin', 'filter',
                               'option', 'default');
 
-    /** @var    bool    ÄÉ²Ã¸¡¾Ú¶¯À©¥Õ¥é¥° */
+    /** @var    bool    è¿½åŠ æ¤œè¨¼å¼·åˆ¶ãƒ•ãƒ©ã‚° */
     var $force_validate_plus = false;
 
-    /** @var    array   ¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¥ª¥Ö¥¸¥§¥¯¥È(helper) */
+    /** @var    array   ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(helper) */
     var $helper_app_object = array();
 
-    /** @var    array   ¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¥ª¥Ö¥¸¥§¥¯¥È(helper)¤ÇÍøÍÑ¤·¤Ê¤¤¥Õ¥©¡¼¥àÌ¾ */
+    /** @var    array   ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(helper)ã§åˆ©ç”¨ã—ãªã„ãƒ•ã‚©ãƒ¼ãƒ å */
     var $helper_skip_form = array();
 
-    /** @var    int   ¥Õ¥©¡¼¥àÇÛÎó¤Ç»ÈÍÑ²ÄÇ½¤Ê¿¼¤µ¤Î¾å¸Â */
+    /** @var    int   ãƒ•ã‚©ãƒ¼ãƒ é…åˆ—ã§ä½¿ç”¨å¯èƒ½ãªæ·±ã•ã®ä¸Šé™ */
     var $max_form_deps = 10;
 
     /**#@-*/
 
     /**
-     *  Ethna_ActionForm¥¯¥é¥¹¤Î¥³¥ó¥¹¥È¥é¥¯¥¿
+     *  Ethna_ActionFormã‚¯ãƒ©ã‚¹ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      *
      *  @access public
-     *  @param  object  Ethna_Controller    $controller    controller¥ª¥Ö¥¸¥§¥¯¥È
+     *  @param  object  Ethna_Controller    $controller    controllerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public function __construct($controller)
     {
@@ -104,10 +104,10 @@ class Ethna_ActionForm
             return;
         }
 
-        // ¥Õ¥©¡¼¥àÃÍ¥Æ¥ó¥×¥ì¡¼¥È¤Î¹¹¿·
+        // ãƒ•ã‚©ãƒ¼ãƒ å€¤ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®æ›´æ–°
         $this->form_template = $this->_setFormTemplate($this->form_template);
 
-        // ¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¥ª¥Ö¥¸¥§¥¯¥È(helper)¤ÎÀ¸À®
+        // ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(helper)ã®ç”Ÿæˆ
         foreach ($this->helper_app_object as $key => $value) {
             if (is_object($value)) {
                 continue;
@@ -115,11 +115,11 @@ class Ethna_ActionForm
             $this->helper_app_object[$key] = $this->_getHelperAppObject($key);
         }
 
-        // ¥Õ¥©¡¼¥àÃÍÄêµÁ¤ÎÀßÄê
+        // ãƒ•ã‚©ãƒ¼ãƒ å€¤å®šç¾©ã®è¨­å®š
         $this->_setFormDef_HelperObj();
         $this->_setFormDef();
 
-        // ¾ÊÎ¬ÃÍÊäÀµ
+        // çœç•¥å€¤è£œæ­£
         foreach ($this->form as $name => $value) {
             foreach ($this->def as $k) {
                 if (isset($value[$k]) == false) {
@@ -130,11 +130,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÃÍ¤Î¥¢¥¯¥»¥µ(R)
+     *  ãƒ•ã‚©ãƒ¼ãƒ å€¤ã®ã‚¢ã‚¯ã‚»ã‚µ(R)
      *
      *  @access public
-     *  @param  string  $name   ¥Õ¥©¡¼¥àÃÍ¤ÎÌ¾¾Î
-     *  @return mixed   ¥Õ¥©¡¼¥àÃÍ
+     *  @param  string  $name   ãƒ•ã‚©ãƒ¼ãƒ å€¤ã®åç§°
+     *  @return mixed   ãƒ•ã‚©ãƒ¼ãƒ å€¤
      */
     function get($name)
     {
@@ -150,11 +150,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÃÍÄêµÁ¤ò¼èÆÀ¤¹¤ë
+     *  ãƒ•ã‚©ãƒ¼ãƒ å€¤å®šç¾©ã‚’å–å¾—ã™ã‚‹
      *
      *  @access public
-     *  @param  string  $name   ¼èÆÀ¤¹¤ë¥Õ¥©¡¼¥àÌ¾(null¤Ê¤éÁ´¤Æ¤ÎÄêµÁ¤ò¼èÆÀ)
-     *  @return array   ¥Õ¥©¡¼¥àÃÍÄêµÁ
+     *  @param  string  $name   å–å¾—ã™ã‚‹ãƒ•ã‚©ãƒ¼ãƒ å(nullãªã‚‰å…¨ã¦ã®å®šç¾©ã‚’å–å¾—)
+     *  @return array   ãƒ•ã‚©ãƒ¼ãƒ å€¤å®šç¾©
      */
     function getDef($name = null)
     {
@@ -170,11 +170,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥à¹àÌÜÉ½¼¨Ì¾¤ò¼èÆÀ¤¹¤ë
+     *  ãƒ•ã‚©ãƒ¼ãƒ é …ç›®è¡¨ç¤ºåã‚’å–å¾—ã™ã‚‹
      *
      *  @access public
-     *  @param  string  $name   ¥Õ¥©¡¼¥àÃÍ¤ÎÌ¾¾Î
-     *  @return mixed   ¥Õ¥©¡¼¥àÃÍ¤ÎÉ½¼¨Ì¾
+     *  @param  string  $name   ãƒ•ã‚©ãƒ¼ãƒ å€¤ã®åç§°
+     *  @return mixed   ãƒ•ã‚©ãƒ¼ãƒ å€¤ã®è¡¨ç¤ºå
      */
     function getName($name)
     {
@@ -191,10 +191,10 @@ class Ethna_ActionForm
     }
     
     /**
-     *  ¥æ¡¼¥¶¤«¤éÁ÷¿®¤µ¤ì¤¿¥Õ¥©¡¼¥àÃÍ¤ò¥Õ¥©¡¼¥àÃÍÄêµÁ¤Ë½¾¤Ã¤Æ¥¤¥ó¥İ¡¼¥È¤¹¤ë
+     *  ãƒ¦ãƒ¼ã‚¶ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ•ã‚©ãƒ¼ãƒ å€¤ã‚’ãƒ•ã‚©ãƒ¼ãƒ å€¤å®šç¾©ã«å¾“ã£ã¦ã‚¤ãƒ³ãƒãƒ¼ãƒˆã™ã‚‹
      *
      *  @access public
-     *  @todo   Â¿¼¡¸µ¤ÎÇÛÎó¤Ø¤ÎÂĞ±ş
+     *  @todo   å¤šæ¬¡å…ƒã®é…åˆ—ã¸ã®å¯¾å¿œ
      */
     function setFormVars()
     {
@@ -209,15 +209,15 @@ class Ethna_ActionForm
         foreach ($this->form as $name => $def) {
             $type = is_array($def['type']) ? $def['type'][0] : $def['type'];
             if ($type == VAR_TYPE_FILE) {
-                // ¥Õ¥¡¥¤¥ë¤Î¾ì¹ç
+                // ãƒ•ã‚¡ã‚¤ãƒ«ã®å ´åˆ
 
-                // ÃÍ¤ÎÍ­Ìµ¤Î¸¡ºº
+                // å€¤ã®æœ‰ç„¡ã®æ¤œæŸ»
                 if (isset($_FILES[$name]) == false || is_null($_FILES[$name])) {
                     $this->form_vars[$name] = null;
                     continue;
                 }
 
-                // ÇÛÎó¹½Â¤¤Î¸¡ºº
+                // é…åˆ—æ§‹é€ ã®æ¤œæŸ»
                 if (is_array($def['type'])) {
                     if (is_array($_FILES[$name]['tmp_name']) == false) {
                         $this->handleError($name, E_FORM_WRONGTYPE_ARRAY);
@@ -235,7 +235,7 @@ class Ethna_ActionForm
                 $files = null;
                 if (is_array($def['type'])) {
                     $files = array();
-                    // ¥Õ¥¡¥¤¥ë¥Ç¡¼¥¿¤òºÆ¹½À®
+                    // ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‡ãƒ¼ã‚¿ã‚’å†æ§‹æˆ
                     foreach (array_keys($_FILES[$name]['name']) as $key) {
                         $files[$key] = array();
                         $files[$key]['name'] = $_FILES[$name]['name'][$key];
@@ -243,7 +243,7 @@ class Ethna_ActionForm
                         $files[$key]['size'] = $_FILES[$name]['size'][$key];
                         $files[$key]['tmp_name'] = $_FILES[$name]['tmp_name'][$key];
                         if (isset($_FILES[$name]['error']) == false) {
-                            // PHP 4.2.0 °ÊÁ°
+                            // PHP 4.2.0 ä»¥å‰
                             $files[$key]['error'] = 0;
                         } else {
                             $files[$key]['error'] = $_FILES[$name]['error'][$key];
@@ -256,28 +256,28 @@ class Ethna_ActionForm
                     }
                 }
 
-                // ÃÍ¤Î¥¤¥ó¥İ¡¼¥È
+                // å€¤ã®ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
                 $this->form_vars[$name] = $files;
 
             } else {
-                // ¥Õ¥¡¥¤¥ë°Ê³°¤Î¾ì¹ç
+                // ãƒ•ã‚¡ã‚¤ãƒ«ä»¥å¤–ã®å ´åˆ
 
-                // ÃÍ¤ÎÍ­Ìµ¤Î¸¡ºº
+                // å€¤ã®æœ‰ç„¡ã®æ¤œæŸ»
                 if (isset($http_vars[$name]) == false
                     || is_null($http_vars[$name])) {
                     $this->form_vars[$name] = null;
                     if (isset($http_vars["{$name}_x"])
                         && isset($http_vars["{$name}_y"])) {
-                        // °ÊÁ°¤Î»ÅÍÍ¤Ë¹ç¤ï¤»¤ë
+                        // ä»¥å‰ã®ä»•æ§˜ã«åˆã‚ã›ã‚‹
                         $this->form_vars[$name] = $http_vars["{$name}_x"];
                     }
                     continue;
                 }
 
-                // ÇÛÎó¹½Â¤¤Î¸¡ºº
+                // é…åˆ—æ§‹é€ ã®æ¤œæŸ»
                 if (is_array($def['type'])) {
                     if (is_array($http_vars[$name]) == false) {
-                        // ¸·Ì©¤Ë¤Ï¡¢¤³¤ÎÇÛÎó¤Î³ÆÍ×ÁÇ¤Ï¥¹¥«¥é¡¼¤Ç¤¢¤ë¤Ù¤­
+                        // å³å¯†ã«ã¯ã€ã“ã®é…åˆ—ã®å„è¦ç´ ã¯ã‚¹ã‚«ãƒ©ãƒ¼ã§ã‚ã‚‹ã¹ã
                         $this->handleError($name, E_FORM_WRONGTYPE_ARRAY);
                         $this->form_vars[$name] = null;
                         continue;
@@ -290,14 +290,14 @@ class Ethna_ActionForm
                     }
                 }
 
-                // ÃÍ¤Î¥¤¥ó¥İ¡¼¥È
+                // å€¤ã®ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
                 $this->form_vars[$name] = $http_vars[$name];
             }
         }
     }
 
     /**
-     *  ¥æ¡¼¥¶¤«¤éÁ÷¿®¤µ¤ì¤¿¥Õ¥©¡¼¥àÃÍ¤ò¥¯¥ê¥¢¤¹¤ë
+     *  ãƒ¦ãƒ¼ã‚¶ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ•ã‚©ãƒ¼ãƒ å€¤ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹
      *
      *  @access public
      */
@@ -307,11 +307,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÃÍ¤Ø¤Î¥¢¥¯¥»¥µ(W)
+     *  ãƒ•ã‚©ãƒ¼ãƒ å€¤ã¸ã®ã‚¢ã‚¯ã‚»ã‚µ(W)
      *
      *  @access public
-     *  @param  string  $name   ¥Õ¥©¡¼¥àÃÍ¤ÎÌ¾¾Î
-     *  @param  string  $value  ÀßÄê¤¹¤ëÃÍ
+     *  @param  string  $name   ãƒ•ã‚©ãƒ¼ãƒ å€¤ã®åç§°
+     *  @param  string  $value  è¨­å®šã™ã‚‹å€¤
      */
     function set($name, $value)
     {
@@ -319,12 +319,12 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÃÍÄêµÁ¤òÀßÄê¤¹¤ë
+     *  ãƒ•ã‚©ãƒ¼ãƒ å€¤å®šç¾©ã‚’è¨­å®šã™ã‚‹
      *
      *  @access public
-     *  @param  string  $name   ÀßÄê¤¹¤ë¥Õ¥©¡¼¥àÌ¾(null¤Ê¤éÁ´¤Æ¤ÎÄêµÁ¤òÀßÄê)
-     *  @param  array   $value  ÀßÄê¤¹¤ë¥Õ¥©¡¼¥àÃÍÄêµÁ
-     *  @return array   ¥Õ¥©¡¼¥àÃÍÄêµÁ
+     *  @param  string  $name   è¨­å®šã™ã‚‹ãƒ•ã‚©ãƒ¼ãƒ å(nullãªã‚‰å…¨ã¦ã®å®šç¾©ã‚’è¨­å®š)
+     *  @param  array   $value  è¨­å®šã™ã‚‹ãƒ•ã‚©ãƒ¼ãƒ å€¤å®šç¾©
+     *  @return array   ãƒ•ã‚©ãƒ¼ãƒ å€¤å®šç¾©
      */
     function setDef($name, $value)
     {
@@ -336,11 +336,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÃÍ¤òÇÛÎó¤Ë¤·¤ÆÊÖ¤¹
+     *  ãƒ•ã‚©ãƒ¼ãƒ å€¤ã‚’é…åˆ—ã«ã—ã¦è¿”ã™
      *
      *  @access public
-     *  @param  bool    $escape HTML¥¨¥¹¥±¡¼¥×¥Õ¥é¥°(true:¥¨¥¹¥±¡¼¥×¤¹¤ë)
-     *  @return array   ¥Õ¥©¡¼¥àÃÍ¤ò³ÊÇ¼¤·¤¿ÇÛÎó
+     *  @param  bool    $escape HTMLã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ãƒ•ãƒ©ã‚°(true:ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹)
+     *  @return array   ãƒ•ã‚©ãƒ¼ãƒ å€¤ã‚’æ ¼ç´ã—ãŸé…åˆ—
      */
     public function getArray($escape = true)
     {
@@ -352,11 +352,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥¢¥×¥ê¥±¡¼¥·¥ç¥óÀßÄêÃÍ¤Î¥¢¥¯¥»¥µ(R)
+     *  ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³è¨­å®šå€¤ã®ã‚¢ã‚¯ã‚»ã‚µ(R)
      *
      *  @access public
-     *  @param  string  $name   ¥­¡¼
-     *  @return mixed   ¥¢¥×¥ê¥±¡¼¥·¥ç¥óÀßÄêÃÍ
+     *  @param  string  $name   ã‚­ãƒ¼
+     *  @return mixed   ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³è¨­å®šå€¤
      */
     function getApp($name)
     {
@@ -367,11 +367,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥¢¥×¥ê¥±¡¼¥·¥ç¥óÀßÄêÃÍ¤Î¥¢¥¯¥»¥µ(W)
+     *  ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³è¨­å®šå€¤ã®ã‚¢ã‚¯ã‚»ã‚µ(W)
      *
      *  @access public
-     *  @param  string  $name   ¥­¡¼
-     *  @param  mixed   $value  ÃÍ
+     *  @param  string  $name   ã‚­ãƒ¼
+     *  @param  mixed   $value  å€¤
      */
     function setApp($name, $value)
     {
@@ -379,11 +379,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥¢¥×¥ê¥±¡¼¥·¥ç¥óÀßÄêÃÍ¤òÇÛÎó¤Ë¤·¤ÆÊÖ¤¹
+     *  ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³è¨­å®šå€¤ã‚’é…åˆ—ã«ã—ã¦è¿”ã™
      *
      *  @access public
-     *  @param  boolean $escape HTML¥¨¥¹¥±¡¼¥×¥Õ¥é¥°(true:¥¨¥¹¥±¡¼¥×¤¹¤ë)
-     *  @return array   ¥Õ¥©¡¼¥àÃÍ¤ò³ÊÇ¼¤·¤¿ÇÛÎó
+     *  @param  boolean $escape HTMLã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ãƒ•ãƒ©ã‚°(true:ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹)
+     *  @return array   ãƒ•ã‚©ãƒ¼ãƒ å€¤ã‚’æ ¼ç´ã—ãŸé…åˆ—
      */
     public function getAppArray($escape = true)
     {
@@ -395,11 +395,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥¢¥×¥ê¥±¡¼¥·¥ç¥óÀßÄêÃÍ(¼«Æ°¥¨¥¹¥±¡¼¥×¤Ê¤·)¤Î¥¢¥¯¥»¥µ(R)
+     *  ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³è¨­å®šå€¤(è‡ªå‹•ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ãªã—)ã®ã‚¢ã‚¯ã‚»ã‚µ(R)
      *
      *  @access public
-     *  @param  string  $name   ¥­¡¼
-     *  @return mixed   ¥¢¥×¥ê¥±¡¼¥·¥ç¥óÀßÄêÃÍ
+     *  @param  string  $name   ã‚­ãƒ¼
+     *  @return mixed   ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³è¨­å®šå€¤
      */
     function getAppNE($name)
     {
@@ -410,11 +410,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥¢¥×¥ê¥±¡¼¥·¥ç¥óÀßÄêÃÍ(¼«Æ°¥¨¥¹¥±¡¼¥×¤Ê¤·)¤Î¥¢¥¯¥»¥µ(W)
+     *  ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³è¨­å®šå€¤(è‡ªå‹•ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ãªã—)ã®ã‚¢ã‚¯ã‚»ã‚µ(W)
      *
      *  @access public
-     *  @param  string  $name   ¥­¡¼
-     *  @param  mixed   $value  ÃÍ
+     *  @param  string  $name   ã‚­ãƒ¼
+     *  @param  mixed   $value  å€¤
      */
     function setAppNE($name, $value)
     {
@@ -422,11 +422,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥¢¥×¥ê¥±¡¼¥·¥ç¥óÀßÄêÃÍ(¼«Æ°¥¨¥¹¥±¡¼¥×¤Ê¤·)¤òÇÛÎó¤Ë¤·¤ÆÊÖ¤¹
+     *  ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³è¨­å®šå€¤(è‡ªå‹•ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ãªã—)ã‚’é…åˆ—ã«ã—ã¦è¿”ã™
      *
      *  @access public
-     *  @param  boolean $escape HTML¥¨¥¹¥±¡¼¥×¥Õ¥é¥°(true:¥¨¥¹¥±¡¼¥×¤¹¤ë)
-     *  @return array   ¥Õ¥©¡¼¥àÃÍ¤ò³ÊÇ¼¤·¤¿ÇÛÎó
+     *  @param  boolean $escape HTMLã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ãƒ•ãƒ©ã‚°(true:ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹)
+     *  @return array   ãƒ•ã‚©ãƒ¼ãƒ å€¤ã‚’æ ¼ç´ã—ãŸé…åˆ—
      */
     public function getAppNEArray($escape = false)
     {
@@ -438,12 +438,12 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥à¤òÇÛÎó¤Ë¤·¤ÆÊÖ¤¹(ÆâÉô½èÍı)
+     *  ãƒ•ã‚©ãƒ¼ãƒ ã‚’é…åˆ—ã«ã—ã¦è¿”ã™(å†…éƒ¨å‡¦ç†)
      *
      *  @access private
-     *  @param  array   &$vars      ¥Õ¥©¡¼¥à(Åù)¤ÎÇÛÎó
-     *  @param  array   &$retval    ÇÛÎó¤Ø¤ÎÊÑ´¹·ë²Ì
-     *  @param  bool    $escape     HTML¥¨¥¹¥±¡¼¥×¥Õ¥é¥°(true:¥¨¥¹¥±¡¼¥×¤¹¤ë)
+     *  @param  array   &$vars      ãƒ•ã‚©ãƒ¼ãƒ (ç­‰)ã®é…åˆ—
+     *  @param  array   &$retval    é…åˆ—ã¸ã®å¤‰æ›çµæœ
+     *  @param  bool    $escape     HTMLã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ãƒ•ãƒ©ã‚°(true:ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹)
      */
     function _getArray(&$vars, &$retval, $escape)
     {
@@ -459,10 +459,10 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ÄÉ²Ã¸¡¾Ú¶¯À©¥Õ¥é¥°¤ò¼èÆÀ¤¹¤ë
-     *  (ÄÌ¾ï¸¡¾Ú¤Ç¥¨¥é¡¼¤¬È¯À¸¤·¤¿¾ì¹ç¤Ç¤â_validatePlus()¤¬¸Æ¤Ó½Ğ¤µ¤ì¤ë)
+     *  è¿½åŠ æ¤œè¨¼å¼·åˆ¶ãƒ•ãƒ©ã‚°ã‚’å–å¾—ã™ã‚‹
+     *  (é€šå¸¸æ¤œè¨¼ã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã§ã‚‚_validatePlus()ãŒå‘¼ã³å‡ºã•ã‚Œã‚‹)
      *  @access public
-     *  @return bool    true:ÄÉ²Ã¸¡¾Ú¶¯À© false:ÄÉ²Ã¸¡¾ÚÈó¶¯À©
+     *  @return bool    true:è¿½åŠ æ¤œè¨¼å¼·åˆ¶ false:è¿½åŠ æ¤œè¨¼éå¼·åˆ¶
      */
     function isForceValidatePlus()
     {
@@ -470,10 +470,10 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ÄÉ²Ã¸¡¾Ú¶¯À©¥Õ¥é¥°¤òÀßÄê¤¹¤ë
+     *  è¿½åŠ æ¤œè¨¼å¼·åˆ¶ãƒ•ãƒ©ã‚°ã‚’è¨­å®šã™ã‚‹
      *
      *  @access public
-     *  @param  $force_validate_plus    ÄÉ²Ã¸¡¾Ú¶¯À©¥Õ¥é¥°
+     *  @param  $force_validate_plus    è¿½åŠ æ¤œè¨¼å¼·åˆ¶ãƒ•ãƒ©ã‚°
      */
     function setForceValidatePlus($force_validate_plus)
     {
@@ -481,10 +481,10 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÃÍ¸¡¾Ú¥á¥½¥Ã¥É
+     *  ãƒ•ã‚©ãƒ¼ãƒ å€¤æ¤œè¨¼ãƒ¡ã‚½ãƒƒãƒ‰
      *
      *  @access public
-     *  @return int     È¯À¸¤·¤¿¥¨¥é¡¼¤Î¿ô
+     *  @return int     ç™ºç”Ÿã—ãŸã‚¨ãƒ©ãƒ¼ã®æ•°
      */
     function validate()
     {
@@ -493,7 +493,7 @@ class Ethna_ActionForm
         }
 
         if ($this->ae->count() == 0 || $this->isForceValidatePlus()) {
-            // ÄÉ²Ã¸¡¾Ú¥á¥½¥Ã¥É
+            // è¿½åŠ æ¤œè¨¼ãƒ¡ã‚½ãƒƒãƒ‰
             $this->_validatePlus();
         }
 
@@ -501,11 +501,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥×¥é¥°¥¤¥ó¤ò»È¤Ã¤¿¥Õ¥©¡¼¥àÃÍ¸¡¾Ú¥á¥½¥Ã¥É
+     *  ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚’ä½¿ã£ãŸãƒ•ã‚©ãƒ¼ãƒ å€¤æ¤œè¨¼ãƒ¡ã‚½ãƒƒãƒ‰
      *
      *  @access private
-     *  @param  string  $form_name  ¥Õ¥©¡¼¥à¤ÎÌ¾Á°
-     *  @todo   ae Â¦¤Ë $key ¤òÍ¿¤¨¤é¤ì¤ë¤è¤¦¤Ë¤¹¤ë
+     *  @param  string  $form_name  ãƒ•ã‚©ãƒ¼ãƒ ã®åå‰
+     *  @todo   ae å´ã« $key ã‚’ä¸ãˆã‚‰ã‚Œã‚‹ã‚ˆã†ã«ã™ã‚‹
      */
     function _validateWithPlugin($form_name)
     {
@@ -521,7 +521,7 @@ class Ethna_ActionForm
                         = $this->_filter($this->form_vars[$form_name][$key],
                                          $this->form[$form_name]['filter']);
                 }
-            } else {  //  ÇÛÎó¤ÇÃÍ¤¬¶õ¤Î¾ì¹ç
+            } else {  //  é…åˆ—ã§å€¤ãŒç©ºã®å ´åˆ
                 $this->form_vars[$form_name]
                     = $this->_filter($this->form_vars[$form_name],
                                      $this->form[$form_name]['filter']);
@@ -531,7 +531,7 @@ class Ethna_ActionForm
         $form_vars = $this->get($form_name);
         $plugin = $this->_getPluginDef($form_name);
 
-        // type ¤Î¥Á¥§¥Ã¥¯¤ò½èÍı¤ÎºÇ½é¤ËÄÉ²Ã
+        // type ã®ãƒã‚§ãƒƒã‚¯ã‚’å‡¦ç†ã®æœ€åˆã«è¿½åŠ 
         $plugin = array_merge(array('type' => array()), $plugin);
         if (is_array($this->form[$form_name]['type'])) {
             $plugin['type']['type'] = $this->form[$form_name]['type'][0];
@@ -542,14 +542,14 @@ class Ethna_ActionForm
             $plugin['type']['error'] = $this->form[$form_name]['type_error'];
         }
 
-        // ¥¹¥«¥é¡¼¤Î¾ì¹ç
+        // ã‚¹ã‚«ãƒ©ãƒ¼ã®å ´åˆ
         if (is_array($this->form[$form_name]['type']) == false) {
             foreach (array_keys($plugin) as $name) {
-                // break: ÌÀ¼¨¤µ¤ì¤Æ¤¤¤Ê¤±¤ì¤Ğ¡¤¥¨¥é¡¼¤¬µ¯¤­¤¿¤évalidate¤ò·ÑÂ³¤·¤Ê¤¤
+                // break: æ˜ç¤ºã•ã‚Œã¦ã„ãªã‘ã‚Œã°ï¼Œã‚¨ãƒ©ãƒ¼ãŒèµ·ããŸã‚‰validateã‚’ç¶™ç¶šã—ãªã„
                 $break = isset($plugin[$name]['break']) == false
                                || $plugin[$name]['break'];
 
-                // ¥×¥é¥°¥¤¥ó¼èÆÀ
+                // ãƒ—ãƒ©ã‚°ã‚¤ãƒ³å–å¾—
                 unset($v);
                 $v = $this->plugin->getPlugin('Validator',
                                                ucfirst(strtolower($name)));
@@ -557,11 +557,11 @@ class Ethna_ActionForm
                     continue;
                 }
 
-                // ¥Ğ¥ê¥Ç¡¼¥·¥ç¥ó¼Â¹Ô
+                // ãƒãƒªãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³å®Ÿè¡Œ
                 unset($r);
                 $r = $v->validate($form_name, $form_vars, $plugin[$name]);
 
-                // ¥¨¥é¡¼½èÍı
+                // ã‚¨ãƒ©ãƒ¼å‡¦ç†
                 if ($r !== true) {
                     if (Ethna::isError($r)) {
                         $this->ae->addObject($form_name, $r);
@@ -574,30 +574,30 @@ class Ethna_ActionForm
             return;
         }
 
-        // ÇÛÎó¤Î¾ì¹ç
+        // é…åˆ—ã®å ´åˆ
 
-        // break »Ø¼¨ÍÑ¤Î key list
+        // break æŒ‡ç¤ºç”¨ã® key list
         $valid_keys = is_array($form_vars) ? array_keys($form_vars) : array();
 
         foreach (array_keys($plugin) as $name) {
-            // break: ÌÀ¼¨¤µ¤ì¤Æ¤¤¤Ê¤±¤ì¤Ğ¡¤¥¨¥é¡¼¤¬µ¯¤­¤¿¤évalidate¤ò·ÑÂ³¤·¤Ê¤¤
+            // break: æ˜ç¤ºã•ã‚Œã¦ã„ãªã‘ã‚Œã°ï¼Œã‚¨ãƒ©ãƒ¼ãŒèµ·ããŸã‚‰validateã‚’ç¶™ç¶šã—ãªã„
             $break = isset($plugin[$name]['break']) == false
                            || $plugin[$name]['break'];
 
-            // ¥×¥é¥°¥¤¥ó¼èÆÀ
+            // ãƒ—ãƒ©ã‚°ã‚¤ãƒ³å–å¾—
             unset($v);
             $v = $this->plugin->getPlugin('Validator', ucfirst(strtolower($name)));
             if (Ethna::isError($v)) {
                 continue;
             }
 
-            // ÇÛÎóÁ´ÂÎ¤ò¼õ¤±¼è¤ë¥×¥é¥°¥¤¥ó¤Î¾ì¹ç
+            // é…åˆ—å…¨ä½“ã‚’å—ã‘å–ã‚‹ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®å ´åˆ
             if (isset($v->accept_array) && $v->accept_array == true) {
-                // ¥Ğ¥ê¥Ç¡¼¥·¥ç¥ó¼Â¹Ô
+                // ãƒãƒªãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³å®Ÿè¡Œ
                 unset($r);
                 $r = $v->validate($form_name, $form_vars, $plugin[$name]);
 
-                // ¥¨¥é¡¼½èÍı
+                // ã‚¨ãƒ©ãƒ¼å‡¦ç†
                 if (Ethna::isError($r)) {
                     $this->ae->addObject($form_name, $r);
                     if ($break) {
@@ -607,13 +607,13 @@ class Ethna_ActionForm
                 continue;
             }
 
-            // ÇÛÎó¤Î³ÆÍ×ÁÇ¤ËÂĞ¤·¤Æ¼Â¹Ô
+            // é…åˆ—ã®å„è¦ç´ ã«å¯¾ã—ã¦å®Ÿè¡Œ
             foreach ($valid_keys as $key) {
-                // ¥Ğ¥ê¥Ç¡¼¥·¥ç¥ó¼Â¹Ô
+                // ãƒãƒªãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³å®Ÿè¡Œ
                 unset($r);
                 $r = $v->validate($form_name, $form_vars[$key], $plugin[$name]);
 
-                // ¥¨¥é¡¼½èÍı
+                // ã‚¨ãƒ©ãƒ¼å‡¦ç†
                 if (Ethna::isError($r)) {
                     $this->ae->addObject($form_name, $r);
                     if ($break) {
@@ -625,11 +625,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Á¥§¥Ã¥¯¥á¥½¥Ã¥É(´ğÄì¥¯¥é¥¹)
+     *  ãƒã‚§ãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰(åŸºåº•ã‚¯ãƒ©ã‚¹)
      *
      *  @access public
-     *  @param  string  $name   ¥Õ¥©¡¼¥à¹àÌÜÌ¾
-     *  @return array   ¥Á¥§¥Ã¥¯ÂĞ¾İ¤Î¥Õ¥©¡¼¥àÃÍ(¥¨¥é¡¼¤¬Ìµ¤¤¾ì¹ç¤Ïnull)
+     *  @param  string  $name   ãƒ•ã‚©ãƒ¼ãƒ é …ç›®å
+     *  @return array   ãƒã‚§ãƒƒã‚¯å¯¾è±¡ã®ãƒ•ã‚©ãƒ¼ãƒ å€¤(ã‚¨ãƒ©ãƒ¼ãŒç„¡ã„å ´åˆã¯null)
      */
     function check($name)
     {
@@ -637,7 +637,7 @@ class Ethna_ActionForm
             return null;
         }
 
-        // Ethna_Backend¤ÎÀßÄê
+        // Ethna_Backendã®è¨­å®š
         $c = Ethna_Controller::getInstance();
         $this->backend = $c->getBackend();
 
@@ -645,11 +645,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Á¥§¥Ã¥¯¥á¥½¥Ã¥É: µ¡¼ï°ÍÂ¸Ê¸»ú
+     *  ãƒã‚§ãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰: æ©Ÿç¨®ä¾å­˜æ–‡å­—
      *
      *  @access public
-     *  @param  string  $name   ¥Õ¥©¡¼¥à¹àÌÜÌ¾
-     *  @return object  Ethna_Error ¥¨¥é¡¼¥ª¥Ö¥¸¥§¥¯¥È(¥¨¥é¡¼¤¬Ìµ¤¤¾ì¹ç¤Ïnull)
+     *  @param  string  $name   ãƒ•ã‚©ãƒ¼ãƒ é …ç›®å
+     *  @return object  Ethna_Error ã‚¨ãƒ©ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(ã‚¨ãƒ©ãƒ¼ãŒç„¡ã„å ´åˆã¯null)
      */
     public function checkVendorChar($name)
     {
@@ -657,18 +657,18 @@ class Ethna_ActionForm
         $string = $this->get($name);
 
         for ($i = 0; $i < strlen($string); $i++) {
-            /* JIS13¶è¤Î¤ß¥Á¥§¥Ã¥¯ */
+            /* JIS13åŒºã®ã¿ãƒã‚§ãƒƒã‚¯ */
             $c = ord($string{$i});
             if ($c < 0x80) {
                 /* ASCII */
             } else if ($c == 0x8e) {
-                /* È¾³Ñ¥«¥Ê */
+                /* åŠè§’ã‚«ãƒŠ */
                 $i++;
             } else if ($c == 0x8f) {
                 /* JIS X 0212 */
                 $i += 2;
             } else if ($c == 0xad || ($c >= 0xf9 && $c <= 0xfc)) {
-                /* IBM³ÈÄ¥Ê¸»ú / NECÁªÄêIBM³ÈÄ¥Ê¸»ú */
+                /* IBMæ‹¡å¼µæ–‡å­— / NECé¸å®šIBMæ‹¡å¼µæ–‡å­— */
                 return $this->ae->add($name,
                     _et('{form} contains machine dependent code.'), E_FORM_INVALIDCHAR);
             } else {
@@ -680,11 +680,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Á¥§¥Ã¥¯¥á¥½¥Ã¥É: boolÃÍ
+     *  ãƒã‚§ãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰: boolå€¤
      *
      *  @access public
-     *  @param  string  $name   ¥Õ¥©¡¼¥à¹àÌÜÌ¾
-     *  @return object  Ethna_Error ¥¨¥é¡¼¥ª¥Ö¥¸¥§¥¯¥È(¥¨¥é¡¼¤¬Ìµ¤¤¾ì¹ç¤Ïnull)
+     *  @param  string  $name   ãƒ•ã‚©ãƒ¼ãƒ é …ç›®å
+     *  @return object  Ethna_Error ã‚¨ãƒ©ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(ã‚¨ãƒ©ãƒ¼ãŒç„¡ã„å ´åˆã¯null)
      */
     public function checkBoolean($name)
     {
@@ -709,11 +709,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Á¥§¥Ã¥¯¥á¥½¥Ã¥É: ¥á¡¼¥ë¥¢¥É¥ì¥¹
+     *  ãƒã‚§ãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰: ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹
      *
      *  @access public
-     *  @param  string  $name   ¥Õ¥©¡¼¥à¹àÌÜÌ¾
-     *  @return object  Ethna_Error ¥¨¥é¡¼¥ª¥Ö¥¸¥§¥¯¥È(¥¨¥é¡¼¤¬Ìµ¤¤¾ì¹ç¤Ïnull)
+     *  @param  string  $name   ãƒ•ã‚©ãƒ¼ãƒ é …ç›®å
+     *  @return object  Ethna_Error ã‚¨ãƒ©ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(ã‚¨ãƒ©ãƒ¼ãŒç„¡ã„å ´åˆã¯null)
      */
     public function checkMailaddress($name)
     {
@@ -738,11 +738,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Á¥§¥Ã¥¯¥á¥½¥Ã¥É: URL
+     *  ãƒã‚§ãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰: URL
      *
      *  @access public
-     *  @param  string  $name   ¥Õ¥©¡¼¥à¹àÌÜÌ¾
-     *  @return object  Ethna_Error ¥¨¥é¡¼¥ª¥Ö¥¸¥§¥¯¥È(¥¨¥é¡¼¤¬Ìµ¤¤¾ì¹ç¤Ïnull)
+     *  @param  string  $name   ãƒ•ã‚©ãƒ¼ãƒ é …ç›®å
+     *  @return object  Ethna_Error ã‚¨ãƒ©ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(ã‚¨ãƒ©ãƒ¼ãŒç„¡ã„å ´åˆã¯null)
      */
     public function checkURL($name)
     {
@@ -767,12 +767,12 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÃÍ¤òhidden¥¿¥°¤È¤·¤ÆÊÖ¤¹
+     *  ãƒ•ã‚©ãƒ¼ãƒ å€¤ã‚’hiddenã‚¿ã‚°ã¨ã—ã¦è¿”ã™
      *
      *  @access public
-     *  @param  array   $include_list   ÇÛÎó¤¬»ØÄê¤µ¤ì¤¿¾ì¹ç¡¢¤½¤ÎÇÛÎó¤Ë´Ş¤Ş¤ì¤ë¥Õ¥©¡¼¥à¹àÌÜ¤Î¤ß¤¬ÂĞ¾İ¤È¤Ê¤ë
-     *  @param  array   $exclude_list   ÇÛÎó¤¬»ØÄê¤µ¤ì¤¿¾ì¹ç¡¢¤½¤ÎÇÛÎó¤Ë´Ş¤Ş¤ì¤Ê¤¤¥Õ¥©¡¼¥à¹àÌÜ¤Î¤ß¤¬ÂĞ¾İ¤È¤Ê¤ë
-     *  @return string  hidden¥¿¥°¤È¤·¤Æµ­½Ò¤µ¤ì¤¿HTML
+     *  @param  array   $include_list   é…åˆ—ãŒæŒ‡å®šã•ã‚ŒãŸå ´åˆã€ãã®é…åˆ—ã«å«ã¾ã‚Œã‚‹ãƒ•ã‚©ãƒ¼ãƒ é …ç›®ã®ã¿ãŒå¯¾è±¡ã¨ãªã‚‹
+     *  @param  array   $exclude_list   é…åˆ—ãŒæŒ‡å®šã•ã‚ŒãŸå ´åˆã€ãã®é…åˆ—ã«å«ã¾ã‚Œãªã„ãƒ•ã‚©ãƒ¼ãƒ é …ç›®ã®ã¿ãŒå¯¾è±¡ã¨ãªã‚‹
+     *  @return string  hiddenã‚¿ã‚°ã¨ã—ã¦è¨˜è¿°ã•ã‚ŒãŸHTML
      */
     function getHiddenVars($include_list = null, $exclude_list = null)
     {
@@ -801,7 +801,7 @@ class Ethna_ActionForm
             }
 
             if (is_null($this->form_vars[$key])) {
-                // ¥Õ¥©¡¼¥àÃÍ¤¬Á÷¤é¤ì¤Æ¤¤¤Ê¤¤¾ì¹ç¤Ï¤½¤â¤½¤âhidden¥¿¥°¤ò½ĞÎÏ¤·¤Ê¤¤
+                // ãƒ•ã‚©ãƒ¼ãƒ å€¤ãŒé€ã‚‰ã‚Œã¦ã„ãªã„å ´åˆã¯ãã‚‚ãã‚‚hiddenã‚¿ã‚°ã‚’å‡ºåŠ›ã—ãªã„
                 continue;
             }
 
@@ -820,17 +820,17 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÃÍ¸¡¾Ú¤Î¥¨¥é¡¼½èÍı¤ò¹Ô¤¦
+     *  ãƒ•ã‚©ãƒ¼ãƒ å€¤æ¤œè¨¼ã®ã‚¨ãƒ©ãƒ¼å‡¦ç†ã‚’è¡Œã†
      *
      *  @access public
-     *  @param  string      $name   ¥Õ¥©¡¼¥à¹àÌÜÌ¾
-     *  @param  int         $code   ¥¨¥é¡¼¥³¡¼¥É
+     *  @param  string      $name   ãƒ•ã‚©ãƒ¼ãƒ é …ç›®å
+     *  @param  int         $code   ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰
      */
     function handleError($name, $code)
     {
         $def = $this->getDef($name);
 
-        // ¥æ¡¼¥¶ÄêµÁ¥¨¥é¡¼¥á¥Ã¥»¡¼¥¸
+        // ãƒ¦ãƒ¼ã‚¶å®šç¾©ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
         $code_map = array(
             E_FORM_REQUIRED     => 'required_error',
             E_FORM_WRONGTYPE_SCALAR => 'type_error',
@@ -851,14 +851,14 @@ class Ethna_ActionForm
             E_FORM_MAX_STRING   => 'max_error',
             E_FORM_REGEXP       => 'regexp_error',
         );
-        //   ¥Õ¥©¡¼¥àÄêµÁ¤Ë¥¨¥é¡¼¥á¥Ã¥»¡¼¥¸¤¬ÄêµÁ¤µ¤ì¤Æ¤¤¤ì¤Ğ
-        //   ¤½¤ì¤ò»È¤¦
+        //   ãƒ•ã‚©ãƒ¼ãƒ å®šç¾©ã«ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒå®šç¾©ã•ã‚Œã¦ã„ã‚Œã°
+        //   ãã‚Œã‚’ä½¿ã†
         if (array_key_exists($code_map[$code], $def)) {
             $this->ae->add($name, $def[$code_map[$code]], $code);
             return;
         }
 
-        //   ÄêµÁ¤µ¤ì¤Æ¤¤¤Ê¤¤¾ì¹ç¤Ï¡¢ÆâÉô¤Î¥á¥Ã¥»¡¼¥¸¤ò»È¤¦
+        //   å®šç¾©ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€å†…éƒ¨ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ä½¿ã†
         if ($code == E_FORM_REQUIRED) {
             switch ($def['form_type']) {
             case FORM_TYPE_TEXT:
@@ -947,7 +947,7 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥æ¡¼¥¶ÄêµÁ¸¡¾Ú¥á¥½¥Ã¥É(¥Õ¥©¡¼¥àÃÍ´Ö¤ÎÏ¢·È¥Á¥§¥Ã¥¯Åù)
+     *  ãƒ¦ãƒ¼ã‚¶å®šç¾©æ¤œè¨¼ãƒ¡ã‚½ãƒƒãƒ‰(ãƒ•ã‚©ãƒ¼ãƒ å€¤é–“ã®é€£æºãƒã‚§ãƒƒã‚¯ç­‰)
      *
      *  @access protected
      */
@@ -956,11 +956,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥«¥¹¥¿¥à¥Á¥§¥Ã¥¯¥á¥½¥Ã¥É¤ò¼Â¹Ô¤¹¤ë
+     *  ã‚«ã‚¹ã‚¿ãƒ ãƒã‚§ãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹
      *
      *  @access protected
-     *  @param  string  $method_list    ¥«¥¹¥¿¥à¥á¥½¥Ã¥ÉÌ¾(¥«¥ó¥Ş¶èÀÚ¤ê)
-     *  @param  string  $name           ¥Õ¥©¡¼¥à¹àÌÜÌ¾
+     *  @param  string  $method_list    ã‚«ã‚¹ã‚¿ãƒ ãƒ¡ã‚½ãƒƒãƒ‰å(ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Š)
+     *  @param  string  $name           ãƒ•ã‚©ãƒ¼ãƒ é …ç›®å
      */
     function _validateCustom($method_list, $name)
     {
@@ -975,12 +975,12 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÃÍ¤ËÊÑ´¹¥Õ¥£¥ë¥¿¤òÅ¬ÍÑ¤¹¤ë
+     *  ãƒ•ã‚©ãƒ¼ãƒ å€¤ã«å¤‰æ›ãƒ•ã‚£ãƒ«ã‚¿ã‚’é©ç”¨ã™ã‚‹
      *
      *  @access private
-     *  @param  mixed   $value  ¥Õ¥©¡¼¥àÃÍ
-     *  @param  int     $filter ¥Õ¥£¥ë¥¿ÄêµÁ
-     *  @return mixed   ÊÑ´¹·ë²Ì
+     *  @param  mixed   $value  ãƒ•ã‚©ãƒ¼ãƒ å€¤
+     *  @param  int     $filter ãƒ•ã‚£ãƒ«ã‚¿å®šç¾©
+     *  @return mixed   å¤‰æ›çµæœ
      */
     function _filter($value, $filter)
     {
@@ -1002,11 +1002,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÃÍÊÑ´¹¥Õ¥£¥ë¥¿: Á´³Ñ±Ñ¿ô»ú->È¾³Ñ±Ñ¿ô»ú
+     *  ãƒ•ã‚©ãƒ¼ãƒ å€¤å¤‰æ›ãƒ•ã‚£ãƒ«ã‚¿: å…¨è§’è‹±æ•°å­—->åŠè§’è‹±æ•°å­—
      *
      *  @access protected
-     *  @param  mixed   $value  ¥Õ¥©¡¼¥àÃÍ
-     *  @return mixed   ÊÑ´¹·ë²Ì
+     *  @param  mixed   $value  ãƒ•ã‚©ãƒ¼ãƒ å€¤
+     *  @return mixed   å¤‰æ›çµæœ
      */
     function _filter_alnum_zentohan($value)
     {
@@ -1014,11 +1014,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÃÍÊÑ´¹¥Õ¥£¥ë¥¿: Á´³Ñ¿ô»ú->È¾³Ñ¿ô»ú
+     *  ãƒ•ã‚©ãƒ¼ãƒ å€¤å¤‰æ›ãƒ•ã‚£ãƒ«ã‚¿: å…¨è§’æ•°å­—->åŠè§’æ•°å­—
      *
      *  @access protected
-     *  @param  mixed   $value  ¥Õ¥©¡¼¥àÃÍ
-     *  @return mixed   ÊÑ´¹·ë²Ì
+     *  @param  mixed   $value  ãƒ•ã‚©ãƒ¼ãƒ å€¤
+     *  @return mixed   å¤‰æ›çµæœ
      */
     function _filter_numeric_zentohan($value)
     {
@@ -1026,11 +1026,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÃÍÊÑ´¹¥Õ¥£¥ë¥¿: Á´³Ñ±Ñ»ú->È¾³Ñ±Ñ»ú
+     *  ãƒ•ã‚©ãƒ¼ãƒ å€¤å¤‰æ›ãƒ•ã‚£ãƒ«ã‚¿: å…¨è§’è‹±å­—->åŠè§’è‹±å­—
      *
      *  @access protected
-     *  @param  mixed   $value  ¥Õ¥©¡¼¥àÃÍ
-     *  @return mixed   ÊÑ´¹·ë²Ì
+     *  @param  mixed   $value  ãƒ•ã‚©ãƒ¼ãƒ å€¤
+     *  @return mixed   å¤‰æ›çµæœ
      */
     function _filter_alphabet_zentohan($value)
     {
@@ -1038,11 +1038,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÃÍÊÑ´¹¥Õ¥£¥ë¥¿: º¸¶õÇòºï½ü
+     *  ãƒ•ã‚©ãƒ¼ãƒ å€¤å¤‰æ›ãƒ•ã‚£ãƒ«ã‚¿: å·¦ç©ºç™½å‰Šé™¤
      *
      *  @access protected
-     *  @param  mixed   $value  ¥Õ¥©¡¼¥àÃÍ
-     *  @return mixed   ÊÑ´¹·ë²Ì
+     *  @param  mixed   $value  ãƒ•ã‚©ãƒ¼ãƒ å€¤
+     *  @return mixed   å¤‰æ›çµæœ
      */
     function _filter_ltrim($value)
     {
@@ -1050,11 +1050,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÃÍÊÑ´¹¥Õ¥£¥ë¥¿: ±¦¶õÇòºï½ü
+     *  ãƒ•ã‚©ãƒ¼ãƒ å€¤å¤‰æ›ãƒ•ã‚£ãƒ«ã‚¿: å³ç©ºç™½å‰Šé™¤
      *
      *  @access protected
-     *  @param  mixed   $value  ¥Õ¥©¡¼¥àÃÍ
-     *  @return mixed   ÊÑ´¹·ë²Ì
+     *  @param  mixed   $value  ãƒ•ã‚©ãƒ¼ãƒ å€¤
+     *  @return mixed   å¤‰æ›çµæœ
      */
     function _filter_rtrim($value)
     {
@@ -1062,11 +1062,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÃÍÊÑ´¹¥Õ¥£¥ë¥¿: NULL(0x00)ºï½ü
+     *  ãƒ•ã‚©ãƒ¼ãƒ å€¤å¤‰æ›ãƒ•ã‚£ãƒ«ã‚¿: NULL(0x00)å‰Šé™¤
      *
      *  @access protected
-     *  @param  mixed   $value  ¥Õ¥©¡¼¥àÃÍ
-     *  @return mixed   ÊÑ´¹·ë²Ì
+     *  @param  mixed   $value  ãƒ•ã‚©ãƒ¼ãƒ å€¤
+     *  @return mixed   å¤‰æ›çµæœ
      */
     function _filter_ntrim($value)
     {
@@ -1074,11 +1074,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÃÍÊÑ´¹¥Õ¥£¥ë¥¿: È¾³Ñ¥«¥Ê->Á´³Ñ¥«¥Ê
+     *  ãƒ•ã‚©ãƒ¼ãƒ å€¤å¤‰æ›ãƒ•ã‚£ãƒ«ã‚¿: åŠè§’ã‚«ãƒŠ->å…¨è§’ã‚«ãƒŠ
      *
      *  @access protected
-     *  @param  mixed   $value  ¥Õ¥©¡¼¥àÃÍ
-     *  @return mixed   ÊÑ´¹·ë²Ì
+     *  @param  mixed   $value  ãƒ•ã‚©ãƒ¼ãƒ å€¤
+     *  @return mixed   å¤‰æ›çµæœ
      */
     function _filter_kana_hantozen($value)
     {
@@ -1086,11 +1086,11 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÃÍÄêµÁ¥Æ¥ó¥×¥ì¡¼¥È¤òÀßÄê¤¹¤ë
+     *  ãƒ•ã‚©ãƒ¼ãƒ å€¤å®šç¾©ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’è¨­å®šã™ã‚‹
      *
      *  @access protected
-     *  @param  array   $form_template  ¥Õ¥©¡¼¥àÃÍ¥Æ¥ó¥×¥ì¡¼¥È
-     *  @return array   ¥Õ¥©¡¼¥àÃÍ¥Æ¥ó¥×¥ì¡¼¥È
+     *  @param  array   $form_template  ãƒ•ã‚©ãƒ¼ãƒ å€¤ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ
+     *  @return array   ãƒ•ã‚©ãƒ¼ãƒ å€¤ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ
      */
     function _setFormTemplate($form_template)
     {
@@ -1098,14 +1098,14 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÄêµÁÊÑ¹¹ÍÑ¡¢¥æ¡¼¥¶ÄêµÁ¥Ø¥ë¥Ñ¥á¥½¥Ã¥É
+     *  ãƒ•ã‚©ãƒ¼ãƒ å®šç¾©å¤‰æ›´ç”¨ã€ãƒ¦ãƒ¼ã‚¶å®šç¾©ãƒ˜ãƒ«ãƒ‘ãƒ¡ã‚½ãƒƒãƒ‰
      *
-     *  Ethna_ActionForm#prepare() ¤¬¼Â¹Ô¤µ¤ì¤ëÁ°¤Ë
-     *  ¥æ¡¼¥¶¤¬Æ°Åª¤Ë¥Õ¥©¡¼¥àÄêµÁ¤òÊÑ¹¹¤·¤¿¤¤¾ì¹ç¤Ë
-     *  ¤³¤Î¥á¥½¥Ã¥É¤ò¥ª¡¼¥Ğ¡¼¥é¥¤¥É¤·¤Ş¤¹¡£
+     *  Ethna_ActionForm#prepare() ãŒå®Ÿè¡Œã•ã‚Œã‚‹å‰ã«
+     *  ãƒ¦ãƒ¼ã‚¶ãŒå‹•çš„ã«ãƒ•ã‚©ãƒ¼ãƒ å®šç¾©ã‚’å¤‰æ›´ã—ãŸã„å ´åˆã«
+     *  ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¾ã™ã€‚
      *
-     *  $this->backend ¤â½é´ü²½ºÑ¤ß¤Î¤¿¤á¡¢DB¤ä¥»¥Ã¥·¥ç¥ó
-     *  ¤ÎÃÍ¤Ë´ğ¤Å¤¤¤Æ¥Õ¥©¡¼¥àÄêµÁ¤òÊÑ¹¹¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£
+     *  $this->backend ã‚‚åˆæœŸåŒ–æ¸ˆã¿ã®ãŸã‚ã€DBã‚„ã‚»ãƒƒã‚·ãƒ§ãƒ³
+     *  ã®å€¤ã«åŸºã¥ã„ã¦ãƒ•ã‚©ãƒ¼ãƒ å®šç¾©ã‚’å¤‰æ›´ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
      *
      *  @access public 
      */
@@ -1115,28 +1115,28 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÄêµÁÊÑ¹¹ÍÑ¡¢¥æ¡¼¥¶ÄêµÁ¥Ø¥ë¥Ñ¥á¥½¥Ã¥É
+     *  ãƒ•ã‚©ãƒ¼ãƒ å®šç¾©å¤‰æ›´ç”¨ã€ãƒ¦ãƒ¼ã‚¶å®šç¾©ãƒ˜ãƒ«ãƒ‘ãƒ¡ã‚½ãƒƒãƒ‰
      *
-     *  ¥Õ¥©¡¼¥à¥Ø¥ë¥Ñ¤ò»È¤¦¤È¤­¤Ë¡¢¥Õ¥©¡¼¥àÄêµÁ¤òÆ°Åª¤Ë
-     *  ÊÑ¹¹¤·¤¿¤¤¾ì¹ç¤Ë¡¢¤³¤Î¥á¥½¥Ã¥É¤ò¥ª¡¼¥Ğ¡¼¥é¥¤¥É¤·¤Ş¤¹¡£
+     *  ãƒ•ã‚©ãƒ¼ãƒ ãƒ˜ãƒ«ãƒ‘ã‚’ä½¿ã†ã¨ãã«ã€ãƒ•ã‚©ãƒ¼ãƒ å®šç¾©ã‚’å‹•çš„ã«
+     *  å¤‰æ›´ã—ãŸã„å ´åˆã«ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¾ã™ã€‚
      *
-     *  °Ê²¼¤ÎÄêµÁ¤ò¥Æ¥ó¥×¥ì¡¼¥È¤Ç¹Ô¤Ã¤¿¾ì¹ç¤Ë¸Æ¤Ó½Ğ¤µ¤ì¤Ş¤¹¡£
+     *  ä»¥ä¸‹ã®å®šç¾©ã‚’ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã§è¡Œã£ãŸå ´åˆã«å‘¼ã³å‡ºã•ã‚Œã¾ã™ã€‚
      *  
-     *  {form ethna_action=...} (ethna_action ¤¬¤Ê¤¤¾ì¹ç¤Ï¸Æ¤Ó½Ğ¤µ¤ì¤Ş¤»¤ó)
-     *  {form_input action=...} (action ¤¬¤Ê¤¤¾ì¹ç¤Ï¸Æ¤Ó½Ğ¤µ¤ì¤Ş¤»¤ó)
+     *  {form ethna_action=...} (ethna_action ãŒãªã„å ´åˆã¯å‘¼ã³å‡ºã•ã‚Œã¾ã›ã‚“)
+     *  {form_input action=...} (action ãŒãªã„å ´åˆã¯å‘¼ã³å‡ºã•ã‚Œã¾ã›ã‚“)
      *
      *  @access public 
      */
     function setFormDef_ViewHelper()
     {
-        //   TODO: ¥Ç¥Õ¥©¥ë¥È¼ÂÁõ¤Ï Ethna_ActionClass#prepare Á°¤Ë
-        //   ¸Æ¤Ó½Ğ¤µ¤ì¤ë¤â¤Î¤ÈÆ±¤¸¡£°Û¤Ê¤ë¾ì¹ç¤Ë¥ª¡¼¥Ğ¥é¥¤¥É¤¹¤ë
+        //   TODO: ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã¯ Ethna_ActionClass#prepare å‰ã«
+        //   å‘¼ã³å‡ºã•ã‚Œã‚‹ã‚‚ã®ã¨åŒã˜ã€‚ç•°ãªã‚‹å ´åˆã«ã‚ªãƒ¼ãƒãƒ©ã‚¤ãƒ‰ã™ã‚‹
         $this->setFormDef_PreHelper(); 
     }
 
     /**
-     *  ¥Ø¥ë¥Ñ¥ª¥Ö¥¸¥§¥¯¥È(¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¥ª¥Ö¥¸¥§¥¯¥È)
-     *  ·ĞÍ³¤Ç¤Î¥Õ¥©¡¼¥àÃÍÄêµÁ¤òÀßÄê¤¹¤ë
+     *  ãƒ˜ãƒ«ãƒ‘ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ)
+     *  çµŒç”±ã§ã®ãƒ•ã‚©ãƒ¼ãƒ å€¤å®šç¾©ã‚’è¨­å®šã™ã‚‹
      *
      *  @access protected
      */
@@ -1174,7 +1174,7 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÃÍÄêµÁ¤òÀßÄê¤¹¤ë
+     *  ãƒ•ã‚©ãƒ¼ãƒ å€¤å®šç¾©ã‚’è¨­å®šã™ã‚‹
      *
      *  @access protected
      */
@@ -1193,10 +1193,10 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥Õ¥©¡¼¥àÃÍÄêµÁ¤«¤é¥×¥é¥°¥¤¥ó¤ÎÄêµÁ¥ê¥¹¥È¤òÊ¬Î¥¤¹¤ë
+     *  ãƒ•ã‚©ãƒ¼ãƒ å€¤å®šç¾©ã‹ã‚‰ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®å®šç¾©ãƒªã‚¹ãƒˆã‚’åˆ†é›¢ã™ã‚‹
      *
      *  @access protected
-     *  @param  string  $form_name   ¥×¥é¥°¥¤¥ó¤ÎÄêµÁ¥ê¥¹¥È¤ò¼èÆÀ¤¹¤ë¥Õ¥©¡¼¥à¤ÎÌ¾Á°
+     *  @param  string  $form_name   ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®å®šç¾©ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ãƒ•ã‚©ãƒ¼ãƒ ã®åå‰
      */
     function _getPluginDef($form_name)
     {
@@ -1218,30 +1218,30 @@ class Ethna_ActionForm
         $def = $this->getDef($form_name);
         $plugin = array();
         foreach (array_keys($def) as $key) {
-            // Ì¤ÄêµÁÍ×ÁÇ¤ò¥¹¥­¥Ã¥×
+            // æœªå®šç¾©è¦ç´ ã‚’ã‚¹ã‚­ãƒƒãƒ—
             if ($def[$key] === null) {
                 continue;
             }
 
-            // ¥×¥é¥°¥¤¥óÌ¾¤È¥Ñ¥é¥á¡¼¥¿Ì¾¤ËÊ¬³ä
+            // ãƒ—ãƒ©ã‚°ã‚¤ãƒ³åã¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã«åˆ†å‰²
             $snippet = explode('_', $key, 2);
             $name = $snippet[0];
 
-            // Èó¥×¥é¥°¥¤¥óÍ×ÁÇ¤ò¥¹¥­¥Ã¥×
+            // éãƒ—ãƒ©ã‚°ã‚¤ãƒ³è¦ç´ ã‚’ã‚¹ã‚­ãƒƒãƒ—
             if (in_array($name, $this->def_noplugin)) {
                 continue;
             }
 
             if (count($snippet) == 1) {
-                // ¥×¥é¥°¥¤¥óÌ¾¤À¤±¤À¤Ã¤¿¾ì¹ç
+                // ãƒ—ãƒ©ã‚°ã‚¤ãƒ³åã ã‘ã ã£ãŸå ´åˆ
                 if (is_array($def[$key])) {
-                    // ¥×¥é¥°¥¤¥ó¥Ñ¥é¥á¡¼¥¿¤¬¤¢¤é¤«¤¸¤áÇÛÎó¤Ç»ØÄê¤µ¤ì¤Æ¤¤¤ë(¤È¤ß¤Ê¤¹)
+                    // ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒã‚ã‚‰ã‹ã˜ã‚é…åˆ—ã§æŒ‡å®šã•ã‚Œã¦ã„ã‚‹(ã¨ã¿ãªã™)
                     $tmp = $def[$key];
                 } else {
                     $tmp = array($name => $def[$key]);
                 }
             } else {
-                // plugin_param ¤Î¾ì¹ç
+                // plugin_param ã®å ´åˆ
                 $tmp = array($snippet[1] => $def[$key]);
             }
 
@@ -1256,7 +1256,7 @@ class Ethna_ActionForm
     }
 
     /**
-     *  ¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¥ª¥Ö¥¸¥§¥¯¥È(helper)¤òÀ¸À®¤¹¤ë
+     *  ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(helper)ã‚’ç”Ÿæˆã™ã‚‹
      *
      *  @access protected
      */
