@@ -49,9 +49,7 @@ class Ethna_Plugin_Validator_Mbstrmax extends Ethna_Plugin_Validator
                 if (isset($params['error'])) {
                     $msg = $params['error'];
                 } else {
-                    //文字列リテラルをEUCにしておかないと文字化けする
-                    $msg = "{form}は%d文字以下で入力して下さい";
-                    //$msg = _et('Please input less than %d characters to {form}.');
+                    $msg = _et('Please input less than %d characters to {form}.');
                 }
                 return Ethna::raiseNotice($msg, E_FORM_MAX_STRING,
                         array($max_param));
