@@ -670,7 +670,7 @@ class Ethna_ActionForm
             } else if ($c == 0xad || ($c >= 0xf9 && $c <= 0xfc)) {
                 /* IBM拡張文字 / NEC選定IBM拡張文字 */
                 return $this->ae->add($name,
-                    '{form}に機種依存文字が入力されています', E_FORM_INVALIDCHAR);
+                    _et('{form} contains machine dependent code.'), E_FORM_INVALIDCHAR);
             } else {
                 $i++;
             }
