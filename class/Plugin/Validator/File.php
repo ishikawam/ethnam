@@ -1,7 +1,7 @@
 <?php
 // vim: foldmethod=marker
 /**
- *  Ethna_Plugin_Validator_File.php
+ *  File.php
  *
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  *  @license    http://www.opensource.org/licenses/bsd-license.php The BSD License
@@ -43,7 +43,7 @@ if (defined('UPLOAD_ERR_CANT_WRITE') == false) { // PHP 5.1.0
 class Ethna_Plugin_Validator_File extends Ethna_Plugin_Validator
 {
     /** @var    bool    配列を受け取るかフラグ */
-    var $accept_array = false;
+    public $accept_array = false;
 
     /**
      *  アップロードされたファイルのチェックを行う
@@ -54,7 +54,7 @@ class Ethna_Plugin_Validator_File extends Ethna_Plugin_Validator
      *  @param  mixed   $var        フォームの値
      *  @param  array   $params     プラグインのパラメータ
      */
-    function validate($name, $var, $params)
+    public function validate($name, $var, $params)
     {
         $true = true;
         if ($this->getFormType($name) != VAR_TYPE_FILE) {
@@ -106,7 +106,6 @@ class Ethna_Plugin_Validator_File extends Ethna_Plugin_Validator
             }
             return Ethna::raiseNotice($msg, E_FORM_WRONGTYPE_FILE);
         }
-
 
         // size の検査
         if (isset($params['size_max'])) {
@@ -194,4 +193,3 @@ class Ethna_Plugin_Validator_File extends Ethna_Plugin_Validator
     }
 }
 // }}}
-
