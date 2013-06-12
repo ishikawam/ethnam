@@ -11,11 +11,11 @@
 
 // {{{ Ethna_Plugin_Validator_Mbstrmax
 /**
- *  ºÇÂçÃÍ¥Á¥§¥Ã¥¯¥×¥é¥°¥¤¥ó (¥Ş¥ë¥Á¥Ğ¥¤¥ÈÊ¸»úÎóÍÑ)
+ *  æœ€å¤§å€¤ãƒã‚§ãƒƒã‚¯ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ (ãƒãƒ«ãƒãƒã‚¤ãƒˆæ–‡å­—åˆ—ç”¨)
  *
  *  NOTE:
- *      - mbstring ¤òÍ­¸ú¤Ë¤·¤Æ¤ª¤¯É¬Í×¤¬¤¢¤ê¤Ş¤¹¡£
- *      - ¥¨¥é¡¼¥á¥Ã¥»¡¼¥¸¤Ï¡¢Á´³ÑÈ¾³Ñ¤ò¶èÊÌ¤·¤Ş¤»¤ó¡£
+ *      - mbstring ã‚’æœ‰åŠ¹ã«ã—ã¦ãŠãå¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
+ *      - ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯ã€å…¨è§’åŠè§’ã‚’åŒºåˆ¥ã—ã¾ã›ã‚“ã€‚
  * 
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
  *  @access     public
@@ -23,17 +23,17 @@
  */
 class Ethna_Plugin_Validator_Mbstrmax extends Ethna_Plugin_Validator
 {
-    /** @var    bool    ÇÛÎó¤ò¼õ¤±¼è¤ë¤«¥Õ¥é¥° */
+    /** @var    bool    é…åˆ—ã‚’å—ã‘å–ã‚‹ã‹ãƒ•ãƒ©ã‚° */
     var $accept_array = false;
 
     /**
-     *  ºÇÂçÃÍ¤Î¥Á¥§¥Ã¥¯¤ò¹Ô¤¦
+     *  æœ€å¤§å€¤ã®ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã†
      *
      *  @access public
-     *  @param  string  $name       ¥Õ¥©¡¼¥à¤ÎÌ¾Á°
-     *  @param  mixed   $var        ¥Õ¥©¡¼¥à¤ÎÃÍ
-     *  @param  array   $params     ¥×¥é¥°¥¤¥ó¤Î¥Ñ¥é¥á¡¼¥¿
-     *  @return true: À®¸ù  Ethna_Error: ¥¨¥é¡¼
+     *  @param  string  $name       ãƒ•ã‚©ãƒ¼ãƒ ã®åå‰
+     *  @param  mixed   $var        ãƒ•ã‚©ãƒ¼ãƒ ã®å€¤
+     *  @param  array   $params     ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     *  @return true: æˆåŠŸ  Ethna_Error: ã‚¨ãƒ©ãƒ¼
      */
     function validate($name, $var, $params)
     {

@@ -11,7 +11,7 @@
 
 // {{{ Ethna_Plugin_Validator_Max
 /**
- *  ºÇÂçÃÍ¥Á¥§¥Ã¥¯¥×¥é¥°¥¤¥ó
+ *  æœ€å¤§å€¤ãƒã‚§ãƒƒã‚¯ãƒ—ãƒ©ã‚°ã‚¤ãƒ³
  *
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  *  @access     public
@@ -19,16 +19,16 @@
  */
 class Ethna_Plugin_Validator_Max extends Ethna_Plugin_Validator
 {
-    /** @var    bool    ÇÛÎó¤ò¼õ¤±¼è¤ë¤«¥Õ¥é¥° */
+    /** @var    bool    é…åˆ—ã‚’å—ã‘å–ã‚‹ã‹ãƒ•ãƒ©ã‚° */
     var $accept_array = false;
 
     /**
-     *  ºÇÂçÃÍ¤Î¥Á¥§¥Ã¥¯¤ò¹Ô¤¦
+     *  æœ€å¤§å€¤ã®ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã†
      *
      *  @access public
-     *  @param  string  $name       ¥Õ¥©¡¼¥à¤ÎÌ¾Á°
-     *  @param  mixed   $var        ¥Õ¥©¡¼¥à¤ÎÃÍ
-     *  @param  array   $params     ¥×¥é¥°¥¤¥ó¤Î¥Ñ¥é¥á¡¼¥¿
+     *  @param  string  $name       ãƒ•ã‚©ãƒ¼ãƒ ã®åå‰
+     *  @param  mixed   $var        ãƒ•ã‚©ãƒ¼ãƒ ã®å€¤
+     *  @param  array   $params     ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     function validate($name, $var, $params)
     {
