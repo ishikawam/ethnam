@@ -56,7 +56,7 @@ class Ethna_ViewClass
     /** @public    array   アクションフォームオブジェクト(helper) */
     public $helper_action_form = array();
 
-    /** @public    array   helperでhtmlのattributeにはしなパラメータの一覧 */
+    /** @public    array   helperでhtmlのattributeにはしないパラメータの一覧 */
     public $helper_parameter_keys = array('default', 'option', 'separator');
 
     /** @public    object  Ethna_Session       セッションオブジェクト */
