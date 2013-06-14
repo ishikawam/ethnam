@@ -382,4 +382,3 @@ class Ethna_ClassFactory
     }
 }
 // }}}
-
