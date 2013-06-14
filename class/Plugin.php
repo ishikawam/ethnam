@@ -72,7 +72,7 @@ class Ethna_Plugin
      *  @access public
      *  @param  object  Ethna_Logger    $logger ログオブジェクト
      */
-    function setLogger($logger)
+    public function setLogger($logger)
     {
         if ($this->logger === null && is_object($logger)) {
             $this->logger = $logger;
@@ -101,7 +101,7 @@ class Ethna_Plugin
      *  @param  string  $type   プラグインの種類
      *  @return array   プラグインオブジェクトの配列
      */
-    function getPluginList($type)
+    public function getPluginList($type)
     {
         $plugin_list = array();
 
@@ -162,7 +162,7 @@ class Ethna_Plugin
      *  @param  string  $plugin_alias_name  property name to set
      *  @param  array   $plugin             array(type, name)
      */
-    function setPlugin($plugin_alias_name, $plugin)
+    public function setPlugin($plugin_alias_name, $plugin)
     {
         if (isset($this->{$plugin_alias_name})) {
             return Ethna::raiseWarning('preload plugin alias name is conflicted [alias=%s], It doesn\'t loaded.',
@@ -218,7 +218,7 @@ class Ethna_Plugin
      *  @param  string  $type   プラグインの種類
      *  @param  string  $name   プラグインの名前
      */
-    function _unloadPlugin($type, $name)
+    public function _unloadPlugin($type, $name)
     {
         unset($this->obj_registry[$type][$name]);
     }
@@ -282,7 +282,7 @@ class Ethna_Plugin
      *  @param  string  $appid  アプリケーションID (廃止予定)
      *  @return array   プラグインのクラス名、ディレクトリ、ファイル名の配列
      */
-    function getPluginNaming($type, $name, $appid = 'Ethna')
+    public function getPluginNaming($type, $name, $appid = 'Ethna')
     {
         $ext = $this->ctl->getExt('php');
 
@@ -417,7 +417,7 @@ class Ethna_Plugin
      *  @access public
      *  @return array
      */
-    function searchAllPluginType()
+    public function searchAllPluginType()
     {
         $type_list = array();
         foreach (array_reverse($this->appid_list) as $appid) {
