@@ -288,7 +288,7 @@ class Ethna_ClassFactory
      */
     function _getObject_Session($class_name)
     {
-        $_ret_object = new $class_name($this->ctl, $this->ctl->getAppId(), $this->ctl->getDirectory('tmp'));
+        $_ret_object = new $class_name($this->ctl, $this->ctl->getAppId());
         return $_ret_object;
     }
 
