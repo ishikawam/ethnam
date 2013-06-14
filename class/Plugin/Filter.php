@@ -44,16 +44,16 @@ class Ethna_Plugin_Filter
      *  Filterのコンストラクタ
      *
      *  @access public
-     *  @param  object  Ethna_Controller    &$controller    コントローラオブジェクト
+     *  @param  object  Ethna_Controller    $controller    コントローラオブジェクト
      */
-    function Ethna_Plugin_Filter(&$controller)
+    public function __construct($controller)
     {
         // オブジェクトの設定
-        $this->controller =& $controller;
-        $this->ctl =& $this->controller;
+        $this->controller = $controller;
+        $this->ctl = $this->controller;
 
-        $this->config =& $controller->getConfig();
-        $this->logger =& $this->controller->getLogger();
+        $this->config = $controller->getConfig();
+        $this->logger = $this->controller->getLogger();
     }
 
     /**
