@@ -193,6 +193,8 @@ class Ethna_Session
         $_SESSION['__anonymous__'] = $anonymous;
         $this->session_start = true;
 
+        $this->logger->log(LOG_INFO, 'Session started.');
+
         return true;
     }
 
