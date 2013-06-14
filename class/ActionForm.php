@@ -27,7 +27,7 @@ define('FILTER_FW', 'kana_hantozen,ntrim');
 class Ethna_ActionForm
 {
     /**#@+
-     *  @access private
+     *  @access protected
      */
 
     /** @var    array   フォーム値定義(デフォルト) */
@@ -36,51 +36,51 @@ class Ethna_ActionForm
     /** @var    array   フォーム値定義 */
     public $form = array();
 
-    /** @var    array   フォーム値 */
+    /** @FIXME @protected    array   フォーム値 */
     var $form_vars = array();
 
-    /** @var    array   アプリケーション設定値 */
+    /** @protected    array   アプリケーション設定値 */
     var $app_vars = array();
 
-    /** @var    array   アプリケーション設定値(自動エスケープなし) */
+    /** @protected    array   アプリケーション設定値(自動エスケープなし) */
     var $app_ne_vars = array();
 
-    /** @var    object  Ethna_Backend       バックエンドオブジェクト */
+    /** @protected    object  Ethna_Backend       バックエンドオブジェクト */
     var $backend;
 
-    /** @var    object  Ethna_ActionError   アクションエラーオブジェクト */
+    /** @protected    object  Ethna_ActionError   アクションエラーオブジェクト */
     var $action_error;
 
-    /** @var    object  Ethna_ActionError   アクションエラーオブジェクト(省略形) */
+    /** @protected    object  Ethna_ActionError   アクションエラーオブジェクト(省略形) */
     var $ae;
 
-    /** @var    object  Ethna_I18N  i18nオブジェクト */
+    /** @protected    object  Ethna_I18N  i18nオブジェクト */
     var $i18n;
 
-    /** @var    object  Ethna_Logger    ログオブジェクト */
+    /** @protected    object  Ethna_Logger    ログオブジェクト */
     var $logger;
 
-    /** @var    object  Ethna_Plugin    プラグインオブジェクト */
+    /** @protected    object  Ethna_Plugin    プラグインオブジェクト */
     var $plugin;
 
-    /** @var    array   フォーム定義要素 */
+    /** @protected    array   フォーム定義要素 */
     var $def = array('name', 'required', 'max', 'min', 'regexp', 'mbregexp',
                      'custom', 'filter', 'form_type', 'type');
 
-    /** @var    array   フォーム定義のうち非プラグイン要素とみなすprefix */
+    /** @protected    array   フォーム定義のうち非プラグイン要素とみなすprefix */
     var $def_noplugin = array('type', 'form', 'name', 'plugin', 'filter',
                               'option', 'default');
 
-    /** @var    bool    追加検証強制フラグ */
+    /** @protected    bool    追加検証強制フラグ */
     var $force_validate_plus = false;
 
-    /** @var    array   アプリケーションオブジェクト(helper) */
+    /** @protected    array   アプリケーションオブジェクト(helper) */
     var $helper_app_object = array();
 
-    /** @var    array   アプリケーションオブジェクト(helper)で利用しないフォーム名 */
+    /** @protected    array   アプリケーションオブジェクト(helper)で利用しないフォーム名 */
     var $helper_skip_form = array();
 
-    /** @var    int   フォーム配列で使用可能な深さの上限 */
+    /** @protected    int   フォーム配列で使用可能な深さの上限 */
     var $max_form_deps = 10;
 
     /**#@-*/
