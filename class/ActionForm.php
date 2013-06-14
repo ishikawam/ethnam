@@ -136,7 +136,7 @@ class Ethna_ActionForm
      *  @param  string  $name   フォーム値の名称
      *  @return mixed   フォーム値
      */
-    function get($name)
+    public function get($name)
     {
         return $this->_get($this->form_vars, $name);
     }
@@ -156,7 +156,7 @@ class Ethna_ActionForm
      *  @param  string  $name   取得するフォーム名(nullなら全ての定義を取得)
      *  @return array   フォーム値定義
      */
-    function getDef($name = null)
+    public function getDef($name = null)
     {
         if (is_null($name)) {
             return $this->form;
@@ -176,7 +176,7 @@ class Ethna_ActionForm
      *  @param  string  $name   フォーム値の名称
      *  @return mixed   フォーム値の表示名
      */
-    function getName($name)
+    public function getName($name)
     {
         if (isset($this->form[$name]) == false) {
             return null;
@@ -196,7 +196,7 @@ class Ethna_ActionForm
      *  @access public
      *  @todo   多次元の配列への対応
      */
-    function setFormVars()
+    public function setFormVars()
     {
         if (isset($_SERVER['REQUEST_METHOD']) == false) {
             return;
@@ -301,7 +301,7 @@ class Ethna_ActionForm
      *
      *  @access public
      */
-    function clearFormVars()
+    public function clearFormVars()
     {
         $this->form_vars = array();
     }
@@ -313,7 +313,7 @@ class Ethna_ActionForm
      *  @param  string  $name   フォーム値の名称
      *  @param  string  $value  設定する値
      */
-    function set($name, $value)
+    public function set($name, $value)
     {
         $this->form_vars[$name] = $value;
     }
@@ -326,7 +326,7 @@ class Ethna_ActionForm
      *  @param  array   $value  設定するフォーム値定義
      *  @return array   フォーム値定義
      */
-    function setDef($name, $value)
+    public function setDef($name, $value)
     {
         if (is_null($name)) {
             $this->form = $value;
@@ -358,7 +358,7 @@ class Ethna_ActionForm
      *  @param  string  $name   キー
      *  @return mixed   アプリケーション設定値
      */
-    function getApp($name)
+    public function getApp($name)
     {
         if (isset($this->app_vars[$name]) == false) {
             return null;
@@ -373,7 +373,7 @@ class Ethna_ActionForm
      *  @param  string  $name   キー
      *  @param  mixed   $value  値
      */
-    function setApp($name, $value)
+    public function setApp($name, $value)
     {
         $this->app_vars[$name] = $value;
     }
@@ -401,7 +401,7 @@ class Ethna_ActionForm
      *  @param  string  $name   キー
      *  @return mixed   アプリケーション設定値
      */
-    function getAppNE($name)
+    public function getAppNE($name)
     {
         if (isset($this->app_ne_vars[$name]) == false) {
             return null;
@@ -416,7 +416,7 @@ class Ethna_ActionForm
      *  @param  string  $name   キー
      *  @param  mixed   $value  値
      */
-    function setAppNE($name, $value)
+    public function setAppNE($name, $value)
     {
         $this->app_ne_vars[$name] = $value;
     }
@@ -464,7 +464,7 @@ class Ethna_ActionForm
      *  @access public
      *  @return bool    true:追加検証強制 false:追加検証非強制
      */
-    function isForceValidatePlus()
+    public function isForceValidatePlus()
     {
         return $this->force_validate_plus;
     }
@@ -475,7 +475,7 @@ class Ethna_ActionForm
      *  @access public
      *  @param  $force_validate_plus    追加検証強制フラグ
      */
-    function setForceValidatePlus($force_validate_plus)
+    public function setForceValidatePlus($force_validate_plus)
     {
         $this->force_validate_plus = $force_validate_plus;
     }
@@ -486,7 +486,7 @@ class Ethna_ActionForm
      *  @access public
      *  @return int     発生したエラーの数
      */
-    function validate()
+    public function validate()
     {
         foreach ($this->form as $name => $def) {
             $this->_validateWithPlugin($name);
@@ -631,7 +631,7 @@ class Ethna_ActionForm
      *  @param  string  $name   フォーム項目名
      *  @return array   チェック対象のフォーム値(エラーが無い場合はnull)
      */
-    function check($name)
+    public function check($name)
     {
         if (is_null($this->get($name)) || $this->get($name) === "") {
             return null;
@@ -774,7 +774,7 @@ class Ethna_ActionForm
      *  @param  array   $exclude_list   配列が指定された場合、その配列に含まれないフォーム項目のみが対象となる
      *  @return string  hiddenタグとして記述されたHTML
      */
-    function getHiddenVars($include_list = null, $exclude_list = null)
+    public function getHiddenVars($include_list = null, $exclude_list = null)
     {
         $hidden_vars = "";
         foreach ($this->form as $key => $value) {
@@ -826,7 +826,7 @@ class Ethna_ActionForm
      *  @param  string      $name   フォーム項目名
      *  @param  int         $code   エラーコード
      */
-    function handleError($name, $code)
+    public function handleError($name, $code)
     {
         $def = $this->getDef($name);
 
@@ -1109,7 +1109,7 @@ class Ethna_ActionForm
      *
      *  @access public 
      */
-    function setFormDef_PreHelper()
+    public function setFormDef_PreHelper()
     {
         //  TODO: override this method. 
     }
@@ -1127,7 +1127,7 @@ class Ethna_ActionForm
      *
      *  @access public 
      */
-    function setFormDef_ViewHelper()
+    public function setFormDef_ViewHelper()
     {
         //   TODO: デフォルト実装は Ethna_ActionClass#prepare 前に
         //   呼び出されるものと同じ。異なる場合にオーバライドする
