@@ -114,6 +114,17 @@ class Ethna_Session
     }
 
     /**
+     *  セッションIDを取得する
+     *
+     *  @access public
+     *  @return string  session id
+     */
+    public function getId()
+    {
+        return session_id();
+    }
+
+    /**
      *  セッションの正当性チェック
      *
      *  @access public
