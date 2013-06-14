@@ -4,7 +4,7 @@
  *
  *  sample:
  *  <code>
- *  {"日本語です"|truncate_i18n:5:"..."}
+ *  {"日本語です"|truncate_i18n:7:"..."}
  *  </code>
  *  <code>
  *  日本...
@@ -15,5 +15,18 @@
  */
 function smarty_modifier_truncate_i18n($string, $len = 80, $postfix = "...")
 {
-    return mb_strimwidth($string, 0, $len, $postfix);
+    $ctl = Ethna_Controller::getInstance();
+    $client_enc = $ctl->getClientEncoding();
+
+    //    いわゆる半角を単位にしてwrapする位置を測るため、いったん
+    //    EUC_JP に変換する
+    $euc_string = mb_convert_encoding($string, 'EUC_JP', $client_enc);
+
+    $r = mb_strimwidth($euc_string, 0, $len, $postfix, 'EUC_JP');
+
+    //    最後に、クライアントエンコーディングに変換
+    $r = mb_convert_encoding($r, $client_enc, 'EUC_JP');
+
+    return $r;
 }
+
