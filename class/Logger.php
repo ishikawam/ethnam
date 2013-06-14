@@ -65,37 +65,37 @@ class Ethna_Logger extends Ethna_AppManager
     /** @protected    object  Ethna_Controller    controllerオブジェクト */
     public $controller;
 
-    /** @var    object  Ethna_Controller    controllerオブジェクト($controllerの省略形) */
+    /** @protected    object  Ethna_Controller    controllerオブジェクト($controllerの省略形) */
     public $ctl;
 
-    /** @var    array   ログファシリティ */
+    /** @protected    array   ログファシリティ */
     public $facility = array();
 
-    /** @var    array   ログレベル */
+    /** @protected    array   ログレベル */
     public $level = array();
 
-    /** @var    array   ログオプション */
+    /** @protected    array   ログオプション */
     public $option = array();
 
-    /** @var    array   メッセージフィルタ(出力) */
+    /** @protected    array   メッセージフィルタ(出力) */
     public $message_filter_do = array();
 
-    /** @var    array   メッセージフィルタ(無視) */
+    /** @protected    array   メッセージフィルタ(無視) */
     public $message_filter_ignore = array();
 
-    /** @var    int     アラートレベル */
+    /** @protected    int     アラートレベル */
     public $alert_level;
 
-    /** @var    string  アラートメールアドレス */
+    /** @protected    string  アラートメールアドレス */
     public $alert_mailaddress;
 
-    /** @var    array   Ethna_LogWriter ログ出力オブジェクト */
+    /** @protected    array   Ethna_LogWriter ログ出力オブジェクト */
     public $writer = array();
 
-    /** @var    bool    ログ出力開始フラグ */
+    /** @protected    bool    ログ出力開始フラグ */
     public $is_begin = false;
 
-    /** @var    array   ログスタック(begin()前にlog()が呼び出された場合のスタック) */
+    /** @protected    array   ログスタック(begin()前にlog()が呼び出された場合のスタック) */
     public $log_stack = array();
 
     /**#@-*/
