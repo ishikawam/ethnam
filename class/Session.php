@@ -110,10 +110,12 @@ class Ethna_Session
             session_start();
             $this->session_start = true;
 
-            // check session
-            if ($this->isValid() == false) {
-                setcookie($this->session_name, "", 0, "/");
-                $this->session_start = false;
+            // check remote address changed
+            if ($this->config['check_remote_addr']) {
+                if ($this->isValid() == false) {
+                    setcookie($this->session_name, "", 0, "/");
+                    $this->session_start = false;
+                }
             }
 
             // check anonymous
