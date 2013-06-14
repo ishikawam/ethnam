@@ -36,7 +36,7 @@ class Ethna_Plugin_Cachemanager_Localfile extends Ethna_Plugin_Cachemanager
      *  @param  string  $namespace  キャッシュネームスペース
      *  @return array   キャッシュ値
      */
-    function get($key, $lifetime = null, $namespace = null)
+    public function get($key, $lifetime = null, $namespace = null)
     {
         $namespace = is_null($namespace) ? $this->namespace : $namespace;
         $cache_file = $this->_getCacheFile($namespace, $key);
@@ -101,7 +101,7 @@ class Ethna_Plugin_Cachemanager_Localfile extends Ethna_Plugin_Cachemanager
      *  @param  string  $namespace  キャッシュネームスペース
      *  @return int     最終更新日時(unixtime)
      */
-    function getLastModified($key, $namespace = null)
+    public function getLastModified($key, $namespace = null)
     {
         $namespace = is_null($namespace) ? $this->namespace : $namespace;
         $cache_file = $this->_getCacheFile($namespace, $key);
@@ -122,7 +122,7 @@ class Ethna_Plugin_Cachemanager_Localfile extends Ethna_Plugin_Cachemanager
      *  @param  int     $lifetime   キャッシュ有効期間
      *  @param  string  $namespace  キャッシュネームスペース
      */
-    function isCached($key, $lifetime = null, $namespace = null)
+    public function isCached($key, $lifetime = null, $namespace = null)
     {
         $namespace = is_null($namespace) ? $this->namespace : $namespace;
         $cache_file = $this->_getCacheFile($namespace, $key);
@@ -151,7 +151,7 @@ class Ethna_Plugin_Cachemanager_Localfile extends Ethna_Plugin_Cachemanager
      *  @param  int     $timestamp  キャッシュ最終更新時刻(unixtime)
      *  @param  string  $namespace  キャッシュネームスペース
      */
-    function set($key, $value, $timestamp = null, $namespace = null)
+    public function set($key, $value, $timestamp = null, $namespace = null)
     {
         $namespace = is_null($namespace) ? $this->namespace : $namespace;
         $dir = $this->_getCacheDir($namespace, $key);
@@ -205,7 +205,7 @@ class Ethna_Plugin_Cachemanager_Localfile extends Ethna_Plugin_Cachemanager
      *  @param  string  $key        キャッシュキー
      *  @param  string  $namespace  キャッシュネームスペース
      */
-    function clear($key, $namespace = null)
+    public function clear($key, $namespace = null)
     {
         $namespace = is_null($namespace) ? $this->namespace : $namespace;
         $cache_file = $this->_getCacheFile($namespace, $key);
@@ -220,7 +220,7 @@ class Ethna_Plugin_Cachemanager_Localfile extends Ethna_Plugin_Cachemanager
      *
      *  @access private
      */
-    function _getCacheDir($namespace, $key)
+    private function _getCacheDir($namespace, $key)
     {
         $len = strlen($key);
         // intentionally avoid using -2 or -4
@@ -255,7 +255,7 @@ class Ethna_Plugin_Cachemanager_Localfile extends Ethna_Plugin_Cachemanager
      *
      *  @access private
      */
-    function _getCacheFile($namespace, $key)
+    private function _getCacheFile($namespace, $key)
     {
         return sprintf("%s/%s", $this->_getCacheDir($namespace, $key), $this->_escape($key));
     }
@@ -265,7 +265,7 @@ class Ethna_Plugin_Cachemanager_Localfile extends Ethna_Plugin_Cachemanager
      *
      *  @access private
      */
-    function _escape($string)
+    private function _escape($string)
     {
         return preg_replace('/([^0-9A-Za-z_])/e', "sprintf('%%%02X', ord('\$1'))", $string);
     }
