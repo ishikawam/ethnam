@@ -26,47 +26,47 @@ class Ethna_ViewClass
     /** @protected    object  Ethna_Controller    Controllerオブジェクト */
     protected $ctl;
 
-    /** @var    object  Ethna_Backend       backendオブジェクト */
-    var $backend;
+    /** @public    object  Ethna_Backend       backendオブジェクト */
+    public $backend;
 
-    /** @var    object  Ethna_Config        設定オブジェクト    */
-    var $config;
+    /** @public    object  Ethna_Config        設定オブジェクト    */
+    public $config;
 
-    /** @var    object  Ethna_I18N          i18nオブジェクト */
-    var $i18n;
+    /** @public    object  Ethna_I18N          i18nオブジェクト */
+    public $i18n;
 
-    /** @var    object  Ethna_Logger    ログオブジェクト */
-    var $logger;
+    /** @public    object  Ethna_Logger    ログオブジェクト */
+    public $logger;
 
-    /** @var    object  Ethna_Plugin    プラグインオブジェクト */
-    var $plugin;
+    /** @public    object  Ethna_Plugin    プラグインオブジェクト */
+    public $plugin;
 
-    /** @var    object  Ethna_ActionError   アクションエラーオブジェクト */
-    var $action_error;
+    /** @public    object  Ethna_ActionError   アクションエラーオブジェクト */
+    public $action_error;
 
-    /** @var    object  Ethna_ActionError   アクションエラーオブジェクト(省略形) */
-    var $ae;
+    /** @public    object  Ethna_ActionError   アクションエラーオブジェクト(省略形) */
+    public $ae;
 
-    /** @var    object  Ethna_ActionForm    アクションフォームオブジェクト */
-    var $action_form;
+    /** @public    object  Ethna_ActionForm    アクションフォームオブジェクト */
+    public $action_form;
 
-    /** @var    object  Ethna_ActionForm    アクションフォームオブジェクト(省略形) */
-    var $af;
+    /** @public    object  Ethna_ActionForm    アクションフォームオブジェクト(省略形) */
+    public $af;
 
-    /** @var    array   アクションフォームオブジェクト(helper) */
-    var $helper_action_form = array();
+    /** @public    array   アクションフォームオブジェクト(helper) */
+    public $helper_action_form = array();
 
-    /** @var    array   helperでhtmlのattributeにはしなパラメータの一覧 */
-    var $helper_parameter_keys = array('default', 'option', 'separator');
+    /** @public    array   helperでhtmlのattributeにはしなパラメータの一覧 */
+    public $helper_parameter_keys = array('default', 'option', 'separator');
 
-    /** @var    object  Ethna_Session       セッションオブジェクト */
-    var $session;
+    /** @public    object  Ethna_Session       セッションオブジェクト */
+    public $session;
 
-    /** @var    string  遷移名 */
-    var $forward_name;
+    /** @public    string  遷移名 */
+    public $forward_name;
 
-    /** @var    string  遷移先テンプレートファイル名 */
-    var $forward_path;
+    /** @public    string  遷移先テンプレートファイル名 */
+    public $forward_path;
 
     /**#@-*/
 
