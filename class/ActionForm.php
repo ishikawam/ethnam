@@ -1140,7 +1140,7 @@ class Ethna_ActionForm
      *
      *  @access protected
      */
-    function _setFormDef_HelperObj()
+    protected function _setFormDef_HelperObj()
     {
         foreach (array_keys($this->helper_app_object) as $key) {
             $object = $this->helper_app_object[$key];
@@ -1178,7 +1178,7 @@ class Ethna_ActionForm
      *
      *  @access protected
      */
-    function _setFormDef()
+    protected function _setFormDef()
     {
         foreach ($this->form as $key => $value) {
             if (array_key_exists($key, $this->form_template)
@@ -1198,7 +1198,7 @@ class Ethna_ActionForm
      *  @access protected
      *  @param  string  $form_name   プラグインの定義リストを取得するフォームの名前
      */
-    function _getPluginDef($form_name)
+    protected function _getPluginDef($form_name)
     {
         //  $def = array(
         //               'name'         => 'number',
@@ -1260,7 +1260,7 @@ class Ethna_ActionForm
      *
      *  @access protected
      */
-    function _getHelperAppObject($key)
+    protected function _getHelperAppObject($key)
     {
         $app_object = $this->backend->getObject($key);
         return $app_object;
