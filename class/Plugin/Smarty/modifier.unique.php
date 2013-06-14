@@ -16,14 +16,14 @@
  *      array("foo" => 2, "bar" => 5),
  *  ));
  *
- *  {$array1|@unique}
- *  {$array2|@unique:"foo"}
+ *  {$array1|@unique|@join:''}
+ *  {$array2|@unique:"foo"|@join:''}
  *  </code>
  *  <code>
  *  abc
  *  123
  *  </code>
- *  
+ *
  *  @param  array   $array  処理対象となる配列
  *  @param  key     $key    処理対象となるキー(nullなら配列要素)
  *  @return array   再構成された配列
