@@ -38,6 +38,16 @@ class Ethna_Session
     /** @public    bool    匿名セッションフラグ */
     public $anonymous = false;
 
+    /** @protected    array   Configuration for session */
+    protected $config = array(
+        'handler'           => 'files',
+        'path'              => 'tmp',
+        'check_remote_addr' => true,
+        'cache_limiter'     => 'nocache',
+        'cache_expire'      => '180',
+        'suffix'            => 'SESSID',
+    );
+
     /**#@-*/
 
     /**
