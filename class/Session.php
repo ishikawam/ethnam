@@ -188,7 +188,8 @@ class Ethna_Session
         session_set_cookie_params($lifetime);
         session_id(Ethna_Util::getRandom());
         session_start();
-        $_SESSION['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
+
+        $_SESSION['REMOTE_ADDR'] = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR']: false;
         $_SESSION['__anonymous__'] = $anonymous;
         $this->session_start = true;
 
