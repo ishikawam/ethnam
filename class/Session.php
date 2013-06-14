@@ -51,14 +51,23 @@ class Ethna_Session
         $this->ctl = $ctl;
         $this->logger = $this->ctl->getLogger();
 
-        $this->session_save_dir = null;
-
-        if ($this->session_save_dir != "") {
-            session_save_path($this->session_save_dir);
+        $config = $this->ctl->getConfig()->get('session');
+        if ($config) {
+            $this->config = array_merge($this->config, $config);
         }
 
+        $this->session_save_dir = $this->config['path'];
+        if (($dir = $this->ctl->getDirectory($this->config['path'])) !== null) {
+            $this->session_save_dir = $dir;
+        }
+        $this->session_name = $appid . $this->config['suffix'];
+
+        // set session handler
+        ini_set('session.save_handler', $this->config['handler']);
+        session_save_path($this->session_save_dir);
         session_name($this->session_name);
-        session_cache_limiter('private, must-revalidate');
+        session_cache_limiter($this->config['cache_limiter']);
+        session_cache_expire($this->config['cache_expire']);
 
         $this->session_start = false;
         if (isset($_SERVER['REQUEST_METHOD']) == false) {
@@ -66,15 +75,16 @@ class Ethna_Session
         }
 
         if (strcasecmp($_SERVER['REQUEST_METHOD'], 'post') == 0) {
-            $http_vars =& $_POST;
+            $http_vars = $_POST;
         } else {
-            $http_vars =& $_GET;
+            $http_vars = $_GET;
         }
         if (array_key_exists($this->session_name, $http_vars)
             && $http_vars[$this->session_name] != null) {
             $_COOKIE[$this->session_name] = $http_vars[$this->session_name];
         }
     }
+
 
     /**
      *  セッションを復帰する
