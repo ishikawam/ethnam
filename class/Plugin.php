@@ -25,23 +25,23 @@ class Ethna_Plugin
      *  @access private
      */
 
-    /** @var    object  Ethna_Controller    コントローラオブジェクト */
-    var $controller;
+    /** @protected    object  Ethna_Controller    コントローラオブジェクト */
+    protected $controller;
 
-    /** @var    object  Ethna_Controller    コントローラオブジェクト($controllerの省略形) */
-    var $ctl;
+    /** @protected    object  Ethna_Controller    コントローラオブジェクト($controllerの省略形) */
+    protected $ctl;
 
-    /** @var    object  Ethna_Logger        ログオブジェクト */
-    var $logger;
+    /** @protected    object  Ethna_Logger        ログオブジェクト */
+    protected $logger;
 
-    /** @var    array   プラグインのオブジェクト(インスタンス)を保存する配列 */
-    var $obj_registry = array();
+    /** @public    array   プラグインのオブジェクト(インスタンス)を保存する配列 */
+    public $obj_registry = array();
 
-    /** @var    array   プラグインのクラス名、ソースファイル名を保存する配列 */
-    var $src_registry = array();
+    /** @protected    array   プラグインのクラス名、ソースファイル名を保存する配列 */
+    protected $src_registry = array();
 
-    /** @var    array   検索対象ディレクトリを，プラグインの優先順に保存する配列 */
-    var $_dirlist = array();
+    /** @protected    array   検索対象ディレクトリを，プラグインの優先順に保存する配列 */
+    protected $_dirlist = array();
 
     /**#@-*/
 
