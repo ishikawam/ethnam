@@ -1239,4 +1239,3 @@ class Ethna_ViewClass
     // }}}
 }
 // }}}
-
