@@ -52,10 +52,10 @@ class Ethna_ClassFactory
      *  Ethna_ClassFactoryクラスのコンストラクタ
      *
      *  @access public
-     *  @param  object  Ethna_Controller    &$controller    controllerオブジェクト
+     *  @param  object  Ethna_Controller    $controller    controllerオブジェクト
      *  @param  array                       $class          クラス定義
      */
-    public function __construct(&$controller, $class)
+    public function __construct($controller, $class)
     {
         $this->controller = $controller;
         $this->ctl = $controller;
@@ -106,7 +106,7 @@ class Ethna_ClassFactory
         }
 
         if (isset($this->manager[$type]) == false || is_object($this->manager[$type]) == false) {
-            $this->manager[$type] =& $obj;
+            $this->manager[$type] = $obj;
         }
 
         return $obj;
@@ -179,7 +179,7 @@ class Ethna_ClassFactory
         }
 
         if (isset($this->object[$key]) == false || is_object($this->object[$key]) == false) {
-            $this->object[$key] =& $object;
+            $this->object[$key] = $object;
         }
 
         return $object;
