@@ -23,8 +23,39 @@
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Filter extends Ethna_Plugin_Abstract
+class Ethna_Plugin_Filter
 {
+    /** @var    object  Ethna_Controller    controllerオブジェクト */
+    var $controller;
+
+    /** @var    object  Ethna_Controller    controllerオブジェクト($controllerの省略形) */
+    var $ctl;
+
+    /** @var    object  Ethna_Config        設定オブジェクト */
+    var $config;
+
+    /** @var    object  Ethna_Logger        ログオブジェクト */
+    var $logger;
+
+    /**#@-*/
+
+
+    /**
+     *  Filterのコンストラクタ
+     *
+     *  @access public
+     *  @param  object  Ethna_Controller    &$controller    コントローラオブジェクト
+     */
+    function Ethna_Plugin_Filter(&$controller)
+    {
+        // オブジェクトの設定
+        $this->controller =& $controller;
+        $this->ctl =& $this->controller;
+
+        $this->config =& $controller->getConfig();
+        $this->logger =& $this->controller->getLogger();
+    }
+
     /**
      *  実行前フィルタ
      *
