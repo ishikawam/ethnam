@@ -445,7 +445,7 @@ class Ethna_ActionForm
      *  @param  array   &$retval    配列への変換結果
      *  @param  bool    $escape     HTMLエスケープフラグ(true:エスケープする)
      */
-    function _getArray(&$vars, &$retval, $escape)
+    public function _getArray(&$vars, &$retval, $escape)
     {
         foreach (array_keys($vars) as $name) {
             if (is_array($vars[$name])) {
