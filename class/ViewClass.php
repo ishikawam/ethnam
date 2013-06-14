@@ -68,10 +68,6 @@ class Ethna_ViewClass
     /** @public    string  遷移先テンプレートファイル名 */
     public $forward_path;
 
-    /**#@-*/
-
-    /* 以下はEthna2.6よりインポートしてきた。現在定義だけあるが未使用 */
-
     /** @protected    boolean  配列フォームを呼んだカウンタをリセットするか否か */
     protected $reset_counter = false;
 
