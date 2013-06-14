@@ -16,8 +16,7 @@
  *  @access     public
  *  @package    Ethna
  */
-// abstract class Ethna_Plugin_Abstract
-class Ethna_Plugin_Abstract
+abstract class Ethna_Plugin_Abstract
 {
     /**#@+
      *  @access private
