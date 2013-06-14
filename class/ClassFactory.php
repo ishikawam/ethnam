@@ -27,23 +27,23 @@ class Ethna_ClassFactory
      *  @access private
      */
 
-    /** @var    object  Ethna_Controller    controllerオブジェクト */
-    var $controller;
+    /** @protected    object  Ethna_Controller    controllerオブジェクト */
+    protected $controller;
 
-    /** @var    object  Ethna_Controller    controllerオブジェクト(省略形) */
-    var $ctl;
-    
-    /** @var    array   クラス定義 */
-    var $class = array();
+    /** @protected    object  Ethna_Controller    controllerオブジェクト(省略形) */
+    protected $ctl;
 
-    /** @var    array   生成済みオブジェクトキャッシュ */
-    var $object = array();
+    /** @protected    array   クラス定義 */
+    protected $class = array();
 
-    /** @var    array   生成済みアプリケーションマネージャオブジェクトキャッシュ */
-    var $manager = array();
+    /** @FIXME @protected    array   生成済みオブジェクトキャッシュ */
+    public $object = array();
 
-    /** @var    array   メソッド一覧キャッシュ */
-    var $method_list = array();
+    /** @protected    array   生成済みアプリケーションマネージャオブジェクトキャッシュ */
+    protected $manager = array();
+
+    /** @protected    array   メソッド一覧キャッシュ */
+    protected $method_list = array();
 
     /**#@-*/
 
