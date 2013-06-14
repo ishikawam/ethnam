@@ -185,7 +185,7 @@ class Ethna_Session
         if (!$this->session_start) {
             return true;
         }
-        
+
         session_destroy();
         $this->session_start = false;
         setcookie($this->session_name, "", 0, "/");
@@ -204,12 +204,12 @@ class Ethna_Session
         if (! $this->session_start) {
             return false;
         }
-       
+
         $tmp = $_SESSION;
 
         $this->destroy();
         $this->start($lifetime, $anonymous);
-        
+
         unset($tmp['REMOTE_ADDR']);
         unset($tmp['__anonymous__']);
         foreach ($tmp as $key => $value) {
