@@ -23,17 +23,17 @@ abstract class Ethna_Plugin_Abstract
      */
 
     /** @protected    object  Ethna_Controller    Controller Object */
-    var $controller;
-    var $ctl; /* Alias */
+    public $controller;
+    public $ctl; /* Alias */
 
     /** @protected    object  Ethna_Backend       Backend Object */
-    var $backend;
+    public $backend;
 
     /** @protected    object  Ethna_Config        設定オブジェクト */
-    var $config;
+    public $config;
 
     /** @protected    object  Ethna_Logger        ログオブジェクト */
-    var $logger;
+    public $logger;
 
     /**#@-*/
     /**
