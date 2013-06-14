@@ -52,7 +52,7 @@ class Ethna_Plugin
      *  @access public
      *  @param  object  Ethna_Controller    $controller コントローラオブジェクト
      */
-    public function __construct(&$controller)
+    public function __construct($controller)
     {
         $this->controller = $controller;
         $this->ctl = $this->controller;
@@ -72,7 +72,7 @@ class Ethna_Plugin
      *  @access public
      *  @param  object  Ethna_Logger    $logger ログオブジェクト
      */
-    function setLogger(&$logger)
+    function setLogger($logger)
     {
         if ($this->logger === null && is_object($logger)) {
             $this->logger = $logger;
