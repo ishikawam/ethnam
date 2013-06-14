@@ -110,7 +110,7 @@ class Ethna_Plugin_Validator
      *  @param  mixed   $var       フォームの値 (配列フォームの場合は各要素)
      *  @param  int     $type      フォームのtype
      */
-    public function isEmpty($var, $type)
+    protected function isEmpty($var, $type)
     {
         if ($type == VAR_TYPE_FILE) {
             if (isset($var['error']) == false || $var['error'] != UPLOAD_ERR_OK) {
@@ -131,25 +131,25 @@ class Ethna_Plugin_Validator
     }
 
     /**
-     *  true を参照で返す
+     *  return true
      *
      *  @access protected
      */
-    public function ok()
+    protected function ok()
     {
         $true = true;
         return $true;
     }
 
     /**
-     *  エラーを返す
+     *  return error
      *
      *  @access protected
      *  @param  string  $msg        エラーメッセージ
      *  @param  int     $code       エラーコード
      *  @param  mixed   $info       エラーメッセージにsprintfで渡すパラメータ
      */
-    public function error($msg, $code, $info = null)
+    protected function error($msg, $code, $info = null)
     {
         if ($info != null) {
             if (is_array($info)) {
@@ -163,4 +163,3 @@ class Ethna_Plugin_Validator
     }
 }
 // }}}
-
