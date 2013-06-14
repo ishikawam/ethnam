@@ -339,7 +339,7 @@ class Ethna_Plugin
      *  @param  bool    $parent 親クラスかどうかのフラグ
      *  @return true|Ethna_Error
      */
-    private function &_includePluginSrc($class, $dir, $file, $parent = false)
+    private function _includePluginSrc($class, $dir, $file, $parent = false)
     {
         $true = true;
         if (class_exists($class)) {
