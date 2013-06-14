@@ -128,14 +128,14 @@ class Ethna_ClassFactory
 
     /**
      *  クラスキーに対応するオブジェクトを返す/クラスキーが未定義の場合はAppObjectを探す
+     *  クラスキーとは、[Appid]_Controller#class に定められたもの。
      *
      *  @access public
-     *  @param  string  $key    クラスキー
-     *  @param  bool    $weak   オブジェクトが未生成の場合の強制生成フラグ(default: false)
+     *  @param  string  $key    [Appid]_Controller#class に定められたクラスキー
+     *                          このキーは大文字小文字を区別する
+     *                          (配列のキーとして使われているため)
+     *  @param  bool    $ext    オブジェクトが未生成の場合の強制生成フラグ(default: false)
      *  @return object  生成されたオブジェクト(エラーならnull)
-     *
-     *  TODO: 現状の実装では、typeを名前として扱っているのに、
-     *        大文字小文字を区別して違うインスタンスを返しているのを修正する
      */
     function getObject($key, $ext = false)
     {
@@ -154,20 +154,23 @@ class Ethna_ClassFactory
             list($weak) = $ext;
         }
 
-        // try to include if not defined
+        //  すでにincludeされていなければ、includeを試みる
         if (class_exists($class_name) == false) {
             if ($this->_include($class_name) == false) {
-                return $object;
+                return $object;  //  include 失敗。返り値はnull
             }
         }
 
-        // handle app object first
+        //  AppObject をはじめに扱う
+        //  AppObject はキャッシュされないことに注意
         if (isset($this->class[$key]) == false) {
             $backend = $this->controller->getBackend();
             $object = new $class_name($backend, $key_type, $key_value, $prop);
             return $object;
         }
 
+        //  Ethna_Controllerで定義されたクラスキーの場合
+        //  はメソッド情報を集める
         if (isset($this->method_list[$class_name]) == false) {
             $this->method_list[$class_name] = get_class_methods($class_name);
             for ($i = 0; $i < count($this->method_list[$class_name]); $i++) {
@@ -175,14 +178,20 @@ class Ethna_ClassFactory
             }
         }
 
-        // see if this should be singlton or not
+        //  以下のルールに従って、キャッシュが利用可能かを判定する
+        //  利用可能と判断した場合、キャッシュされていればそれを返す
+        //
+        //  1. メソッドに getInstance があればキャッシュを利用可能と判断する
+        //     この場合、シングルトンかどうかは getInstance 次第
+        //  2. weak が true であれば、キャッシュは利用不能と判断してオブジェクトを再生成
+        //  3. weak が false であれば、キャッシュは利用可能と判断する(デフォルト)
         if ($this->_isCacheAvailable($class_name, $this->method_list[$class_name], $weak)) {
             if (isset($this->object[$key]) && is_object($this->object[$key])) {
                 return $this->object[$key];
             }
         }
 
-        // see if we have helper methods
+        //  インスタンス化のヘルパがあればそれを使う
         $method = sprintf('_getObject_%s', ucfirst($key));
         if (method_exists($this, $method)) {
             $object = $this->$method($class_name);
@@ -192,6 +201,8 @@ class Ethna_ClassFactory
             $object = new $class_name();
         }
 
+        //  クラスキーに定められたクラスのインスタンスは
+        //  とりあえずキャッシュする
         if (isset($this->object[$key]) == false || is_object($this->object[$key]) == false) {
             $this->object[$key] = $object;
         }
