@@ -28,19 +28,19 @@ class Ethna_Plugin_Validator
      *  @access private
      */
 
-    /** @var    object  Ethna_Backend   backendオブジェクト */
-    var $backend;
+    /** @protected    object  Ethna_Backend   backendオブジェクト */
+    public $backend;
 
-    /** @var    object  Ethna_Logger    ログオブジェクト */
-    var $logger;
+    /** @protected    object  Ethna_Logger    ログオブジェクト */
+    public $logger;
 
-    /** @var    object  Ethna_ActionForm    フォームオブジェクト */
-    var $action_form;
+    /** @protected    object  Ethna_ActionForm    フォームオブジェクト */
+    public $action_form;
 
-    /** @var    object  Ethna_ActionForm    フォームオブジェクト */
-    var $af;
+    /** @protected    object  Ethna_ActionForm    フォームオブジェクト */
+    public $af;
 
-    /** @var    bool    配列を受け取るバリデータかどうかのフラグ */
+    /** @protected    bool    配列を受け取るバリデータかどうかのフラグ */
     public $accept_array = false;
 
     /**#@-*/
@@ -51,7 +51,7 @@ class Ethna_Plugin_Validator
      *  @access public
      *  @param  object  Ethna_Controller    $controller コントローラオブジェクト
      */
-    function Ethna_Plugin_Validator(&$controller)
+    public function __construct($controller)
     {
         $this->backend = $controller->getBackend();
         $this->logger = $controller->getLogger();
