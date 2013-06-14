@@ -962,7 +962,7 @@ class Ethna_ActionForm
      *  @param  string  $method_list    カスタムメソッド名(カンマ区切り)
      *  @param  string  $name           フォーム項目名
      */
-    function _validateCustom($method_list, $name)
+    protected function _validateCustom($method_list, $name)
     {
         $method_list = preg_split('/\s*,\s*/', $method_list,
                                   -1, PREG_SPLIT_NO_EMPTY);
@@ -977,12 +977,12 @@ class Ethna_ActionForm
     /**
      *  フォーム値に変換フィルタを適用する
      *
-     *  @access private
+     *  @access protected
      *  @param  mixed   $value  フォーム値
      *  @param  int     $filter フィルタ定義
      *  @return mixed   変換結果
      */
-    function _filter($value, $filter)
+    protected function _filter($value, $filter)
     {
         if (is_null($filter)) {
             return $value;
@@ -1008,7 +1008,7 @@ class Ethna_ActionForm
      *  @param  mixed   $value  フォーム値
      *  @return mixed   変換結果
      */
-    function _filter_alnum_zentohan($value)
+    protected function _filter_alnum_zentohan($value)
     {
         return mb_convert_kana($value, "a");
     }
@@ -1020,7 +1020,7 @@ class Ethna_ActionForm
      *  @param  mixed   $value  フォーム値
      *  @return mixed   変換結果
      */
-    function _filter_numeric_zentohan($value)
+    protected function _filter_numeric_zentohan($value)
     {
         return mb_convert_kana($value, "n");
     }
@@ -1032,7 +1032,7 @@ class Ethna_ActionForm
      *  @param  mixed   $value  フォーム値
      *  @return mixed   変換結果
      */
-    function _filter_alphabet_zentohan($value)
+    protected function _filter_alphabet_zentohan($value)
     {
         return mb_convert_kana($value, "r");
     }
@@ -1044,7 +1044,7 @@ class Ethna_ActionForm
      *  @param  mixed   $value  フォーム値
      *  @return mixed   変換結果
      */
-    function _filter_ltrim($value)
+    protected function _filter_ltrim($value)
     {
         return ltrim($value);
     }
@@ -1056,7 +1056,7 @@ class Ethna_ActionForm
      *  @param  mixed   $value  フォーム値
      *  @return mixed   変換結果
      */
-    function _filter_rtrim($value)
+    protected function _filter_rtrim($value)
     {
         return rtrim($value);
     }
@@ -1068,7 +1068,7 @@ class Ethna_ActionForm
      *  @param  mixed   $value  フォーム値
      *  @return mixed   変換結果
      */
-    function _filter_ntrim($value)
+    protected function _filter_ntrim($value)
     {
         return str_replace("\x00", "", $value);
     }
@@ -1080,7 +1080,7 @@ class Ethna_ActionForm
      *  @param  mixed   $value  フォーム値
      *  @return mixed   変換結果
      */
-    function _filter_kana_hantozen($value)
+    protected function _filter_kana_hantozen($value)
     {
         return mb_convert_kana($value, "K");
     }
@@ -1092,7 +1092,7 @@ class Ethna_ActionForm
      *  @param  array   $form_template  フォーム値テンプレート
      *  @return array   フォーム値テンプレート
      */
-    function _setFormTemplate($form_template)
+    protected function _setFormTemplate($form_template)
     {
         return $form_template;
     }
