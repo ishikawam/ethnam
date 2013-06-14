@@ -205,7 +205,7 @@ class Ethna_ActionForm
         } else {
             $http_vars = $_GET;
         }
-
+        
         foreach ($this->form as $name => $def) {
             $type = is_array($def['type']) ? $def['type'][0] : $def['type'];
             if ($type == VAR_TYPE_FILE) {
