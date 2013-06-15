@@ -496,19 +496,12 @@ class Ethna_Plugin
      *  @param  string  $appid  アプリケーションID
      *  @static
      */
-    function includePlugin($type, $name = null, $appid = null)
+    private static function includePlugin($type, $name = null)
     {
-        // for B.C.
-        if ($type === 'Abstract') {
-            return;
-        }
         $ctl = Ethna_Controller::getInstance();
         $plugin = $ctl->getPlugin();
 
-        if ($appid === null) {
-            $appid = $ctl->getAppId();
-        }
-        list($class, $dir, $file) = $plugin->getPluginNaming($type, $name, $appid);
+        list($class, $dir, $file) = $plugin->getPluginNaming($type, $name, 'Ethna');
         $plugin->_includePluginSrc($class, $dir, $file);
     }
 
