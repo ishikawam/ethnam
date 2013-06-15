@@ -48,7 +48,7 @@ class Ethna_Plugin_Csrf
      *  @access public
      *  @param  object  Ethna_Controller    $controller    コントローラオブジェクト
      */
-    function __construct($controller)
+    public function __construct($controller)
     {
         // オブジェクトの設定
         $this->controller = $controller;
