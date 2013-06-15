@@ -23,18 +23,18 @@ class Ethna_Plugin_Cachemanager
     /** @protected    string  現在のネームスペース */
     protected $namespace = '';
 
+    /** @protected    array  plugin options */
+    protected $opt;
+
     /** @protected    object  Ethna_Backend       backendオブジェクト */
     protected $backend;
 
     /** @protected    object  Ethna_Config        設定オブジェクト    */
     protected $config;
 
-    protected $opt;
-
-    /**#@-*/
 
     /**
-     *  Ethna_Plugin_Cachemanagerクラスのコンストラクタ
+     *  コンストラクタ
      *
      *  @access public
      */
