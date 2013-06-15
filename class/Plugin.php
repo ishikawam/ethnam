@@ -484,7 +484,7 @@ class Ethna_Plugin
      */
     function includeEthnaPlugin($type, $name)
     {
-        Ethna_Plugin::includePlugin($type, $name);
+        Ethna_Plugin::import($type, $name);
     }
 
     /**
@@ -493,10 +493,9 @@ class Ethna_Plugin
      *  @access public
      *  @param  string  $type   プラグインの種類
      *  @param  string  $name   プラグインの名前
-     *  @param  string  $appid  アプリケーションID
      *  @static
      */
-    private static function includePlugin($type, $name = null)
+    private static function import($type, $name = null)
     {
         $ctl = Ethna_Controller::getInstance();
         $plugin = $ctl->getPlugin();
