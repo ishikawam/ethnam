@@ -484,7 +484,7 @@ class Ethna_Plugin
      */
     function includeEthnaPlugin($type, $name)
     {
-        Ethna_Plugin::includePlugin($type, $name, 'Ethna');
+        Ethna_Plugin::includePlugin($type, $name);
     }
 
     /**
