@@ -54,9 +54,14 @@ class Ethna_Plugin_Cachemanager
      *  @access public
      *  @return string  現在のキャッシュネームスペース
      */
-    public function getNamespace($namespace)
+    public function getNamespace($namespace = null)
     {
-        return $this->namespace;
+        if ($namespace === null) {
+            return $this->namespace;
+        }
+        else {
+            return $namespace;
+        }
     }
 
     /**
