@@ -497,7 +497,7 @@ class Ethna_Plugin
      *  @param  string  $name   プラグインの名前
      *  @static
      */
-    private static function import($type, $name = null)
+    public static function import($type, $name = null)
     {
         $ctl = Ethna_Controller::getInstance();
         $plugin = $ctl->getPlugin();
