@@ -20,14 +20,14 @@ class Ethna_Plugin_Cachemanager
 {
     /**#@+  @access private */
 
-    /** @var    string  現在のネームスペース */
-    var $namespace = '';
+    /** @protected    string  現在のネームスペース */
+    protected $namespace = '';
 
-    /** @var    object  Ethna_Backend       backendオブジェクト */
-    var $backend;
+    /** @protected    object  Ethna_Backend       backendオブジェクト */
+    protected $backend;
 
-    /** @var    object  Ethna_Config        設定オブジェクト    */
-    var $config;
+    /** @protected    object  Ethna_Config        設定オブジェクト    */
+    protected $config;
 
     /**#@-*/
 
