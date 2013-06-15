@@ -476,6 +476,20 @@ class Ethna_Plugin
     // }}}
 
     /**
+     *  プラグインのソースを include する
+     *
+     *  @access public
+     *  @param  string  $type   プラグインの種類
+     *  @param  string  $name   プラグインの名前
+     */
+    public function includePlugin($type, $name = null)
+    {
+        list($class, $dir, $file) = $this->getPluginNaming($type, $name, 'Ethna');
+        $this->_includePluginSrc($class, $dir, $file);
+    }
+
+
+    /**
      *  Ethna 本体付属のプラグインのソースを include する
      *
      *  @access public
@@ -488,8 +502,7 @@ class Ethna_Plugin
         $ctl = Ethna_Controller::getInstance();
         $plugin = $ctl->getPlugin();
 
-        list($class, $dir, $file) = $plugin->getPluginNaming($type, $name, 'Ethna');
-        $plugin->_includePluginSrc($class, $dir, $file);
+        $plugin->includePlugin($type, $name);
     }
 
 
