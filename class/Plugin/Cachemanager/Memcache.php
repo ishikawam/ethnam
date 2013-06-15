@@ -45,7 +45,7 @@ class Ethna_Plugin_Cachemanager_Memcache extends Ethna_Plugin_Cachemanager
      *
      *  @access public
      */
-    function __construct(&$controller)
+    public function __construct($controller)
     {
         parent::__construct($controller);
         $this->memcache_pool = array();
