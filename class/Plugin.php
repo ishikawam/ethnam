@@ -297,38 +297,24 @@ class Ethna_Plugin
         if ($appid == 'Ethna') {
             //ver2.6では全てこうなる。
             $baseDir = ETHNA_BASE . "/class/Plugin";
-            if ($name !== null) {
-                $plugin_class_name[] = $name;
-                $dir = $baseDir . "/{$type}";
-                $basename  = "{$name}.{$ext}";
-            } else {
-                //親クラス
-                $dir = $baseDir;
-                $basename  = "{$type}.{$ext}";
-            }
-
-            $class = implode('_', $plugin_class_name);
-
-            return array($class, $dir, $basename);
-
         } else {
             //ver2.6ではここはなくなる。
             $baseDir = $this->controller->getDirectory('plugin');
-            if ($name !== null) {
-                $plugin_class_name[] = $name;
-                $dir = $baseDir . "/{$type}";
-                $basename  = "{$name}.{$ext}";
-            } else {
-                //親クラス
-                $dir = $baseDir;
-                $basename  = "{$type}.{$ext}";
-            }
-
-            $class = implode('_', $plugin_class_name);
-
-            return array($class, $dir, $basename);
         }
 
+        if ($name !== null) {
+            $plugin_class_name[] = $name;
+            $dir = $baseDir . "/{$type}";
+            $basename  = "{$name}.{$ext}";
+        } else {
+            //親クラス
+            $dir = $baseDir;
+            $basename  = "{$type}.{$ext}";
+        }
+
+        $class = implode('_', $plugin_class_name);
+
+        return array($class, $dir, $basename);
     }
 
     /**
