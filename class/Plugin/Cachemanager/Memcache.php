@@ -30,6 +30,14 @@ class Ethna_Plugin_Cachemanager_Memcache extends Ethna_Plugin_Cachemanager
     /** @protected bool 圧縮フラグ */
     protected $compress = true;
 
+    /** @var    array   plugin configure */
+    protected $config_default = array(
+        'host' => 'localhost',
+        'port' => '11211',
+        'retry' => 3,
+        'timeout' => 3,
+    );
+
     /**#@-*/
 
     /**
