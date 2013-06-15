@@ -136,7 +136,7 @@ class Ethna_Plugin
             // プラグインの親クラスを(存在すれば)読み込み
             list($class, $dir, $file) = $this->getPluginNaming($type, null, 'Ethna');
             if (!Ethna::isError($dir)) {
-                $this->_includePluginSrc($class, $dir, $file, true);
+                $this->_includeParentPluginSrc($class, $dir, $file);
             }
         }
 
@@ -528,5 +528,36 @@ class Ethna_Plugin
 
 
     // }}}
+
+
+
+    /**
+     *  親プラグインのソースを include する
+     *
+     *  @access private
+     *  @param  string  $class  クラス名
+     *  @param  string  $dir    ディレクトリ名
+     *  @param  string  $file   ファイル名
+     *  @return 常にtrue
+     */
+    private function _includeParentPluginSrc($class, $dir, $file)
+    {
+        if (class_exists($class)) {
+            return true;
+        }
+
+        $file = $dir . '/' . $file;
+        if (file_exists_ex($file) === false) {
+            return true;
+        }
+
+        include_once $file;
+
+        return true;
+    }
+
+
+
+
 }
 // }}}
