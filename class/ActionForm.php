@@ -517,6 +517,8 @@ class Ethna_ActionForm
      */
     function _validateWithPlugin($form_name)
     {
+        $this->logger->log(LOG_DEBUG, "validating form [%s]", $form_name);
+
         // (pre) filter
         if ($this->form[$form_name]['type'] != VAR_TYPE_FILE) {
             if (is_array($this->form[$form_name]['type']) == false) {
@@ -561,7 +563,9 @@ class Ethna_ActionForm
                 unset($v);
                 $v = $this->plugin->getPlugin('Validator',
                                                ucfirst(strtolower($name)));
+                $this->logger->log(LOG_DEBUG, "validating form [%s] by validator plugin [%s]", $form_name, $name);
                 if (Ethna::isError($v)) {
+                    $this->logger->log(LOG_NOTICE, "cannot get validator plugin [%s]", $name);
                     continue;
                 }
 
