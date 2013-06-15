@@ -301,8 +301,7 @@ class Ethna_Plugin
                 $plugin_class_name[] = $name;
                 $dir = ETHNA_BASE . "/class/Plugin/{$type}";
                 $basename  = "{$name}.{$ext}";
-            }
-            else {
+            } else {
                 //親クラス
                 $dir = ETHNA_BASE . "/class/Plugin";
                 $basename  = "{$type}.{$ext}";
