@@ -314,13 +314,13 @@ class Ethna_Plugin
         } else {
             //ver2.6ではここはなくなる。
 
-            if ($name === null) {
+            if ($name !== null) {
+                $dir = $this->controller->getDirectory('plugin') . "/{$type}";
+                $class = "{$appid}_Plugin_{$type}_{$name}";
+            } else {
                 //親クラス
                 $dir = $this->controller->getDirectory('plugin');
                 $class = "{$appid}_Plugin_{$type}";
-            } else {
-                $dir = $this->controller->getDirectory('plugin') . "/{$type}";
-                $class = "{$appid}_Plugin_{$type}_{$name}";
             }
 
             $basename  = "{$class}.{$ext}";
