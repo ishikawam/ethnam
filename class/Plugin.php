@@ -420,7 +420,7 @@ class Ethna_Plugin
      *  @access public
      *  @param  string  $type   プラグインの種類
      */
-    function searchAllPluginSrc($type)
+    public function searchAllPluginSrc($type)
     {
         // 後で見付かったもので上書きするので $this->appid_list の逆順とする
         $name_list = array();
