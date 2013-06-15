@@ -296,14 +296,14 @@ class Ethna_Plugin
 
         if ($appid == 'Ethna') {
             //ver2.6では全てこうなる。
-
+            $baseDir = ETHNA_BASE . "/class/Plugin";
             if ($name !== null) {
                 $plugin_class_name[] = $name;
-                $dir = ETHNA_BASE . "/class/Plugin/{$type}";
+                $dir = $baseDir . "/{$type}";
                 $basename  = "{$name}.{$ext}";
             } else {
                 //親クラス
-                $dir = ETHNA_BASE . "/class/Plugin";
+                $dir = $baseDir;
                 $basename  = "{$type}.{$ext}";
             }
 
