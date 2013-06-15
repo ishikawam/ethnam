@@ -58,14 +58,9 @@ class Ethna_Plugin_Cachemanager_Memcache extends Ethna_Plugin_Cachemanager
      */
     public function _getMemcache($cache_key, $namespace = null)
     {
-        $retry = $this->config->get('memcache_retry');
-        if ($retry == "") {
-            $retry = 3;
-        }
-        $timeout = $this->config->get('memcache_timeout');
-        if ($timeout == "") {
-            $timeout = 3;
-        }
+        $retry = $this->opt['retry'];
+        $timeout = $this->opt['timeout'];
+
         $r = false;
 
         list($host, $port) = $this->_getMemcacheInfo($cache_key, $namespace);
@@ -77,10 +72,10 @@ class Ethna_Plugin_Cachemanager_Memcache extends Ethna_Plugin_Cachemanager
         $this->memcache_pool["$host:$port"] = new MemCache();
 
         while ($retry > 0) {
-            if ($this->config->get('memcache_use_connect')) {
-                $r = $this->memcache_pool["$host:$port"]->connect($host, $port, $timeout);
-            } else {
+            if ($this->opt['use_pconnect']) {
                 $r = $this->memcache_pool["$host:$port"]->pconnect($host, $port, $timeout);
+            } else {
+                $r = $this->memcache_pool["$host:$port"]->connect($host, $port, $timeout);
             }
             if ($r) {
                 break;
@@ -108,15 +103,10 @@ class Ethna_Plugin_Cachemanager_Memcache extends Ethna_Plugin_Cachemanager
     {
         $namespace = $this->getNamespace($namespace);
 
-        $memcache_info = $this->config->get('memcache');
-        $default_memcache_host = $this->config->get('memcache_host');
-        if ($default_memcache_host == "") {
-            $default_memcache_host = "localhost";
-        }
-        $default_memcache_port = $this->config->get('memcache_port');
-        if ($default_memcache_port == "") {
-            $default_memcache_port = 11211;
-        }
+        $memcache_info = $this->opt['info'];
+        $default_memcache_host = $this->opt['host'];
+        $default_memcache_port = $this->opt['port'];
+
         if ($memcache_info == null || isset($memcache_info[$namespace]) == false) {
             return array($default_memcache_host, $default_memcache_port);
         }
@@ -124,14 +114,16 @@ class Ethna_Plugin_Cachemanager_Memcache extends Ethna_Plugin_Cachemanager
         // namespace/cache_keyで接続先を決定
         $n = count($memcache_info[$namespace]);
 
-        $index = $cache_key % $n;
+        $crc32_key = crc32($cache_key);
+        $index = abs($crc32_key) % $n;
+
         return array(
-            isset($memcache_info[$namespace][$index]['memcache_host']) ?
-                $memcache_info[$namespace][$index]['memcache_host'] :
-                'localhost',
-            isset($memcache_info[$namespace][$index]['memcache_port']) ?
-                $memcache_info[$namespace][$index]['memcache_port'] :
-                11211,
+            isset($memcache_info[$namespace][$index]['host']) ?
+                $memcache_info[$namespace][$index]['host'] :
+                $this->opt['host'],
+            isset($memcache_info[$namespace][$index]['port']) ?
+                $memcache_info[$namespace][$index]['port'] :
+                $this->opt['port'],
         );
 
         // for safe
