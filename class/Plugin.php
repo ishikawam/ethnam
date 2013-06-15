@@ -300,15 +300,15 @@ class Ethna_Plugin
             if ($name !== null) {
                 $plugin_class_name[] = $name;
                 $dir = ETHNA_BASE . "/class/Plugin/{$type}";
+                $basename  = "{$name}.{$ext}";
             }
             else {
                 //親クラス
-                $name = $type;
                 $dir = ETHNA_BASE . "/class/Plugin";
+                $basename  = "{$type}.{$ext}";
             }
 
             $class = implode('_', $plugin_class_name);
-            $basename  = "{$name}.{$ext}";
 
             return array($class, $dir, $basename);
 
