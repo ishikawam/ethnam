@@ -35,7 +35,7 @@ class Ethna_Plugin_Csrf
 
     /** @protected    object  Ethna_Logger        ログオブジェクト */
     protected $logger;
-    
+
     /** @var    string  共有トークン名 */
     protected $token_name = 'ethna_csrf';
 
@@ -46,18 +46,18 @@ class Ethna_Plugin_Csrf
      *  Csrfのコンストラクタ
      *
      *  @access public
-     *  @param  object  Ethna_Controller    &$controller    コントローラオブジェクト
+     *  @param  object  Ethna_Controller    $controller    コントローラオブジェクト
      */
-    function __construct(&$controller)
+    function __construct($controller)
     {
         // オブジェクトの設定
-        $this->controller =& $controller;
-        $this->ctl =& $this->controller;
+        $this->controller = $controller;
+        $this->ctl = $this->controller;
 
-        $this->config =& $controller->getConfig();
-        $this->logger =& $this->controller->getLogger();
+        $this->config = $controller->getConfig();
+        $this->logger = $this->controller->getLogger();
     }
-    
+
     /**
      *  トークンをViewとローカルファイルにセットする
      *
