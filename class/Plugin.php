@@ -475,22 +475,8 @@ class Ethna_Plugin
     }
     // }}}
 
-    // {{{ static な include メソッド
     /**
      *  Ethna 本体付属のプラグインのソースを include する
-     *
-     *  @access public
-     *  @param  string  $type   プラグインの種類
-     *  @param  string  $name   プラグインの名前
-     *  @static
-     */
-    function includeEthnaPlugin($type, $name)
-    {
-        Ethna_Plugin::import($type, $name);
-    }
-
-    /**
-     *  プラグインのソースを include する
      *
      *  @access public
      *  @param  string  $type   プラグインの種類
