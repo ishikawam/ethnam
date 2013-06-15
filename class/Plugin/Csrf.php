@@ -37,13 +37,13 @@ class Ethna_Plugin_Csrf
     var $logger;
     
     /** @var    string  共有トークン名 */
-    var $token_name = 'ethna_csrf';
-    
+    protected $token_name = 'ethna_csrf';
+
     /**#@-*/
 
 
     /**
-     *  Ethna_Plugin_Csrfのコンストラクタ
+     *  Csrfのコンストラクタ
      *
      *  @access public
      *  @param  object  Ethna_Controller    &$controller    コントローラオブジェクト
@@ -64,7 +64,7 @@ class Ethna_Plugin_Csrf
      *  @access public
      *  @return string  トークンのKey
      */
-    function set()
+    public function set()
     {
 
     }
@@ -75,7 +75,7 @@ class Ethna_Plugin_Csrf
      *  @access public
      *  @return string トークンIDを返す。
      */
-    function get()
+    public function get()
     {
 
     }
@@ -86,7 +86,7 @@ class Ethna_Plugin_Csrf
      *  @access public
      *  @return string トークンIDを返す。
      */
-    function remove()
+    public function remove()
     {
 
     }
@@ -97,7 +97,7 @@ class Ethna_Plugin_Csrf
      *  @access public
      *  @return string トークン名を返す。
      */
-    function getName()
+    public function getTokenName()
     {
         return $this->token_name;
     }
@@ -108,7 +108,7 @@ class Ethna_Plugin_Csrf
      *  @access public
      *  @return mixed  正常の場合はtrue, 不正の場合はfalse
      */
-    function isValid()
+    public function isValid()
     {
         $token = $this->_get_token();
 
@@ -131,7 +131,7 @@ class Ethna_Plugin_Csrf
      *  @access public
      *  @return string  keyname
      */
-    function _generateKey()
+    protected function _generateKey()
     {
         return Ethna_Util::getRandom(32);
     }
@@ -142,9 +142,9 @@ class Ethna_Plugin_Csrf
      *  @access public
      *  @return mixed  正常の場合はトークン名, 不正の場合はfalse
      */
-    function _get_token()
+    protected function _get_token()
     {
-        $token_name = $this->getName();
+        $token_name = $this->getTokenName();
         if (strcasecmp($_SERVER['REQUEST_METHOD'], 'post') === 0) {
             return isset($_POST[$token_name]) ? $_POST[$token_name] : null;
         } else {
@@ -153,4 +153,3 @@ class Ethna_Plugin_Csrf
     }
 }
 // }}}
-
