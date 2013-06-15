@@ -192,4 +192,3 @@ class Ethna_Plugin_Logwriter
     }
 }
 // }}}
-
