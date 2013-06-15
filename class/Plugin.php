@@ -21,6 +21,8 @@
  */
 class Ethna_Plugin
 {
+    var $appid_list =  array('Sen', 'Ethna');
+
     /**#@+
      *  @access private
      */
@@ -505,13 +507,6 @@ class Ethna_Plugin
     }
 
 
-    var $appid_list =  array('Sen', 'Ethna');
-
-
-    // }}}
-
-
-
     /**
      *  親プラグインのソースを include する
      *
@@ -536,6 +531,7 @@ class Ethna_Plugin
 
         return true;
     }
+
 
 
 
