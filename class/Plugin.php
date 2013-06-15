@@ -530,5 +530,3 @@ class Ethna_Plugin
     // }}}
 }
 // }}}
-
-require_once ETHNA_BASE . '/class/Plugin/Abstract.php';
