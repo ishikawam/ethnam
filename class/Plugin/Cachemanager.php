@@ -29,6 +29,8 @@ class Ethna_Plugin_Cachemanager
     /** @protected    object  Ethna_Config        設定オブジェクト    */
     protected $config;
 
+    protected $opt;
+
     /**#@-*/
 
     /**
@@ -42,8 +44,7 @@ class Ethna_Plugin_Cachemanager
         $this->backend = $this->controller->getBackend();
         $this->config = $this->controller->getConfig();
 
-	/* 以下は、$this->configがarrayの場合のためのコード */
-        if (isset($this->config['namespace'])) {
+        if (isset($this->opt['namespace'])) {
             $this->namespace = $this->config['namespace'];
         }
     }
