@@ -128,11 +128,11 @@ class Ethna_Plugin_Logwriter
     function _getBacktrace()
     {
         $skip_method_list = array(
-            array('ethna', 'raise.*'),
+            array('ethna', 'raise'),
             array(null, 'raiseerror'),
             array(null, 'handleerror'),
             array('ethna_logger', null),
-            array('ethna_plugin_logwriter*', null),
+            array('ethna_plugin_logwriter', null),
             array('ethna_error', null),
             array('ethna_apperror', null),
             array('ethna_actionerror', null),
@@ -151,16 +151,23 @@ class Ethna_Plugin_Logwriter
             if (isset($bt[$i]['class']) == false) {
                 $bt[$i]['class'] = null;
             }
+            if (isset($bt[$i]['file']) == false) {
+                $bt[$i]['file'] = null;
+            }
+            if (isset($bt[$i]['line']) == false) {
+                $bt[$i]['line'] = null;
+            }
+
             $skip = false;
 
             // メソッドスキップ処理
             foreach ($skip_method_list as $method) {
                 $class = $function = true;
                 if ($method[0] != null) {
-                    $class = preg_match("/$method[0]/i", $bt[$i]['class']);
+                    $class = preg_match("/^$method[0]/i", $bt[$i]['class']);
                 }
                 if ($method[1] != null) {
-                    $function = preg_match("/$method[1]/i", $bt[$i]['function']);
+                    $function = preg_match("/^$method[1]/i", $bt[$i]['function']);
                 }
                 if ($class && $function) {
                     $skip = true;
@@ -180,14 +187,14 @@ class Ethna_Plugin_Logwriter
 
         $function = sprintf("%s.%s", isset($bt[$i]['class']) ? $bt[$i]['class'] : 'global', $bt[$i]['function']);
 
-        $file = isset($bt[$i]['file']) ? $bt[$i]['file'] : '';
+        $file = $bt[$i]['file'];
         if (strncmp($file, $basedir, strlen($basedir)) == 0) {
             $file = substr($file, strlen($basedir));
         }
         if (strncmp($file, ETHNA_BASE, strlen(ETHNA_BASE)) == 0) {
             $file = preg_replace('#^/+#', '', substr($file, strlen(ETHNA_BASE)));
         }
-        $line = isset($bt[$i]['line']) ? $bt[$i]['line'] : '';
+        $line = $bt[$i]['line'];
         return array('function' => $function, 'pos' => sprintf('%s:%s', $file, $line));
     }
 }
