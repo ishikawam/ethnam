@@ -316,7 +316,7 @@ class Ethna_Plugin
             $baseDir = $this->controller->getDirectory('plugin');
             if ($name !== null) {
                 $plugin_class_name[] = $name;
-                $dir =  $baseDir . "/{$type}";
+                $dir = $baseDir . "/{$type}";
                 $basename  = "{$name}.{$ext}";
             } else {
                 //親クラス
