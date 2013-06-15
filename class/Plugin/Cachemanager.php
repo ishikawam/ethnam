@@ -41,6 +41,11 @@ class Ethna_Plugin_Cachemanager
         $this->controller = $controller;
         $this->backend = $this->controller->getBackend();
         $this->config = $this->controller->getConfig();
+
+	/* 以下は、$this->configがarrayの場合のためのコード */
+        if (isset($this->config['namespace'])) {
+            $this->namespace = $this->config['namespace'];
+        }
     }
 
     /**
