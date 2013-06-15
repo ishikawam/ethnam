@@ -41,7 +41,7 @@ class Ethna_Plugin_Cachemanager_Memcache extends Ethna_Plugin_Cachemanager
     /**#@-*/
 
     /**
-     *  Ethna_Plugin_Cachemanager_Memcacheクラスのコンストラクタ
+     *  コンストラクタ
      *
      *  @access public
      */
