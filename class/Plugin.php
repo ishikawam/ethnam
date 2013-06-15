@@ -295,10 +295,8 @@ class Ethna_Plugin
         );
 
         if ($appid == 'Ethna') {
-            //ver2.6では全てこうなる。
             $baseDir = ETHNA_BASE . "/class/Plugin";
         } else {
-            //ver2.6ではここはなくなる。
             $baseDir = $this->controller->getDirectory('plugin');
         }
 
