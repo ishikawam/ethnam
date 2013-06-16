@@ -71,3 +71,4 @@ function smarty_block_form($params, $content, &$smarty, &$repeat)
         return $view->getFormBlock($content, $params);
     }
 }
+
