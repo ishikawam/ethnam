@@ -62,3 +62,4 @@ function smarty_function_form_input($params, &$smarty)
 
     return $view->getFormInput($name, $action, $params);
 }
+
