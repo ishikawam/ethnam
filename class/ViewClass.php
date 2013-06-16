@@ -1080,7 +1080,6 @@ class Ethna_ViewClass
         $element = '';
         if (isset($params['value'])) {
             $element = $params['value'];
-            unset($params['value']);
         } else if (isset($params['default'])) {
             $element = $params['default'];
         } else if (isset($def['default'])) {
@@ -1092,8 +1091,6 @@ class Ethna_ViewClass
             } else {
                 $element = '';
             }
-        } else {
-            $params['value'] = $element;
         }
 
         return $this->_getFormInput_Html('textarea', $params, $element);
