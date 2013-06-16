@@ -46,10 +46,13 @@ function smarty_block_form($params, $content, &$smarty, &$repeat)
             $view->addActionFormHelper($ethna_action);
             $hidden = $c->getActionRequest($ethna_action, 'hidden');
             $content = $hidden . $content;
-            //for debug (by kashiwagi)
+
+            //デバグ用に、送信先のアクション名を表示する
+            //超絶便利。これのおかげて開発効率だいぶあがった。
             if ($c->getConfig()->get('showFormActionName')) {
                 echo "[" . $ethna_action. "]";
             }
+
         }
 
         // enctype の略称対応
