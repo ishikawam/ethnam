@@ -31,6 +31,12 @@ class Ethna_Plugin_Generator_Template extends Ethna_Plugin_Generator
      */
     function generate($forward_name, $skelton = null, $locale, $encoding)
     {
+        if (preg_match('/^owner_([A-Z]+)[a-z]+$/', $forward_name, $matches)) {
+            $entityName = $matches[1];
+        } else {
+            return Ethna::raiseError('invalid forward_name:' . $forward_name);
+        }
+
         //  ロケールが指定された場合は、それを優先する 
         if (!empty($locale)) {
             $this->ctl->setLocale($locale);
@@ -55,6 +61,9 @@ class Ethna_Plugin_Generator_Template extends Ethna_Plugin_Generator
         // add '_' for tpl and no user macro for tpl
         $macro['_project_id'] = $this->ctl->getAppId();
         $macro['client_enc'] = $encoding;
+
+        $macro['entity_lower'] = strtolower($entityName);
+        $macro['entity_upper'] = strtoupper($entityName);
 
         // generate
         if (file_exists($entity)) {

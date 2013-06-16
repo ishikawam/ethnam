@@ -30,6 +30,12 @@ class Ethna_Plugin_Generator_Action extends Ethna_Plugin_Generator
      */
     function generate($action_name, $skelton = null, $gateway = GATEWAY_WWW)
     {
+        if (preg_match('/^owner_([A-Z]+)[a-z]+$/', $action_name, $matches)) {
+            $entityName = $matches[1];
+        } else {
+            return Ethna::raiseError('invalid forward_name:' . $action_name);
+        }
+
         $action_dir = $this->ctl->getActiondir($gateway);
         $action_class = $this->ctl->getDefaultActionClass($action_name, $gateway);
         $action_form = $this->ctl->getDefaultFormClass($action_name, $gateway);
@@ -64,6 +70,9 @@ class Ethna_Plugin_Generator_Action extends Ethna_Plugin_Generator
         $macro['action_class'] = $action_class;
         $macro['action_form'] = $action_form;
         $macro['action_path'] = $action_path;
+
+        $macro['entity_lower'] = strtolower($entityName);
+        $macro['entity_upper'] = strtoupper($entityName);
 
         // user macro
         $user_macro = $this->_getUserMacro();
