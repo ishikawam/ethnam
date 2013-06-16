@@ -91,7 +91,7 @@ class Ethna_Plugin_Validator_Min extends Ethna_Plugin_Validator
                     if (isset($params['error'])) {
                         $msg = $params['error'];
                     } else {
-                        $msg = "Please input more than %d full-size (%d half-size) characters to {form}.";
+                        $msg = _et("Please input more than %d full-size (%d half-size) characters to {form}.");
                     }
                     return Ethna::raiseNotice($msg, E_FORM_MIN_STRING,
                             array(intval($params['min']/2), $params['min']));
