@@ -471,7 +471,7 @@ class Ethna_Plugin
         list($class, $dir, $file) = $this->getPluginNaming($type, $name, 'Ethna');
         $this->_includePluginSrc($class, $dir, $file);
     }
-
+    // }}}
 
     /**
      *  Ethna 本体付属のプラグインのソースを include する
