@@ -21,7 +21,8 @@
  */
 class Ethna_Plugin
 {
-    var $appid_list =  array('Sen', 'Ethna');
+    /** @protected  array  */
+    protected $appid_list;
 
     /**#@+
      *  @access private
@@ -59,6 +60,8 @@ class Ethna_Plugin
         $this->controller = $controller;
         $this->ctl = $this->controller;
         $this->logger = null;
+
+        $this->appid_list = array($controller->getAppId(), 'Ethna');
 
         // load dir_registry
         $this->_loadPluginDirList();
