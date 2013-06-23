@@ -999,8 +999,11 @@ class Ethna_Controller
         $this->action_form->setFormDef_PreHelper();
         $this->action_form->setFormVars();
 
-        // バックエンド処理実行
-        $forward_name = $backend->perform($action_name);
+        // Action#perform 実行
+        $action_class_name = $this->getActionClassName($action_name);
+        $ac = new $action_class_name($backend);
+        $backend->setActionClass($ac);
+        $forward_name = $this->perform($ac);
 
         // アクション実行後フィルタ
         for ($i = count($this->filter_chain) - 1; $i >= 0; $i--) {
@@ -1128,7 +1131,11 @@ class Ethna_Controller
 
         $session = $this->getSession();
         $session->restore();
-        $r = $backend->perform($method);
+
+        $action_class_name = $this->getActionClassName($method);
+        $ac = new $action_class_name($backend);
+        $backend->setActionClass($ac);
+        $r = $this->perform($ac);
 
         return $r;
     }
@@ -1149,6 +1156,35 @@ class Ethna_Controller
         $server = new SoapServer(null, array('uri' => $this->config->get('url')));
         $server->setClass($gg->getClassName());
         $server->handle();
+    }
+
+    /**
+     *  アクションを実行する
+     *
+     *  @param  obj     Ethna_ActionClass アクションクラス
+     *  @return mixed   (string):Forward名(nullならforwardしない) Ethna_Error:エラー
+     */
+    protected function perform($ac)
+    {
+        // アクションの実行
+        $forward_name = null;
+        $forward_name = $ac->authenticate();
+        if ($forward_name === false) {
+            return null;
+        } else if ($forward_name !== null) {
+            return $forward_name;
+        }
+
+        $forward_name = $ac->prepare();
+        if ($forward_name === false) {
+            return null;
+        } else if ($forward_name !== null) {
+            return $forward_name;
+        }
+
+        $forward_name = $ac->perform();
+
+        return $forward_name;
     }
 
     /**
